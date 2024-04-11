@@ -5,7 +5,6 @@ const app = express();
 const port = 3000;
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/api/auth", router);
 
 // -- Handling all req where the requested route is not available -- //
