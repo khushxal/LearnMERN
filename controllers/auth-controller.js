@@ -2,7 +2,7 @@
 
 async function Home(req, res) {
   try {
-    res.send("<h1>Home Landing Page adding to github</h1>");
+    res.send("<h1>Home Landing Page adding</h1>");
   } catch (error) {
     console.log(error);
     res.sendStatus(500);
