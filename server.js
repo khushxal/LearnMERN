@@ -2,7 +2,7 @@ import express from "express";
 import router from "./routes/auth-router.js";
 import bodyParser from "body-parser";
 const app = express();
-const port = 3000;
+const port = 3001;
 
 app.use(bodyParser.json());
 app.use("/api/auth", router);
