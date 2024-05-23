@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-
+// import user from "../models/user-model";
 // connecting to MongoDB using Mongoose
 
 async function connectDB() {
