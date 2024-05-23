@@ -18,4 +18,13 @@ async function Register(req, res) {
   }
 }
 
-export default { Home, Register };
+async function About(req, res) {
+  try {
+    res.send("<h1>This is about page</h1>");
+  } catch (error) {
+    console.log(error);
+    res.sendStatus(500);
+  }
+}
+
+export default { Home, Register, About };
