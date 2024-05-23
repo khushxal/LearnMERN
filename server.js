@@ -1,3 +1,5 @@
+import dot from "dotenv";
+dot.config();
 import express from "express";
 import router from "./routes/auth-router.js";
 import bodyParser from "body-parser";
