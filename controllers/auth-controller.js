@@ -17,7 +17,7 @@ async function Register(req, res) {
     console.log(req.body);
     const { username, phone, password, isAdmin } = req.body; // derefernce the array
     const userExist = await User.findOne({ username });
-    let encryptedPassword = bycrypt.hash(password, 10);
+    let encryptedPassword = await bycrypt.hash(password, 10);
     if (userExist) {
       res.send("<h1>User already exists please sign in to continue</h1>");
     } else {
