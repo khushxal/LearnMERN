@@ -1,6 +1,6 @@
 // -- Following function are the controllers that are responsible for the functionallity part of the route  -- //
 import User from "../models/user-model.js";
-import bycrypt from "bcrypt";
+// import bycrypt from "bcrypt";
 
 async function Home(req, res) {
   try {
@@ -17,7 +17,7 @@ async function Register(req, res) {
     console.log(req.body);
     const { username, phone, password, isAdmin } = req.body; // derefernce the array
     const userExist = await User.findOne({ username });
-    let encryptedPassword = await bycrypt.hash(password, 10);
+    // let encryptedPassword = await bycrypt.hash(password, 10);
     if (userExist) {
       res.send("<h1>User already exists please sign in to continue</h1>");
     } else {
@@ -25,7 +25,7 @@ async function Register(req, res) {
       const addUser = await User.create({
         username,
         phone,
-        password: encryptedPassword,
+        password,
         isAdmin,
       });
       res.send("<h1>User Registered Please login </h1>");
