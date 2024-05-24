@@ -1,5 +1,6 @@
 // -- Following function are the controllers that are responsible for the functionallity part of the route  -- //
 import User from "../models/user-model.js";
+import bycrypt from "bcrypt";
 
 async function Home(req, res) {
   try {
