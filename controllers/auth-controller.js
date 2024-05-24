@@ -28,7 +28,13 @@ async function Register(req, res) {
         password,
         isAdmin,
       });
-      res.send("<h1>User Registered Please login </h1>");
+      // This JWT token is send to the client and will be used for authentication and authorization.
+      // This token needed to be stored at the client side using cookies or local storage.
+      res.status(201).json({
+        msg: addUser, // object returned after added to the the database
+        token: await addUser.generateToken(),
+        userId: addUser._id.toString(), // Mongo created object id
+      });
     }
   } catch (error) {
     console.log(error);

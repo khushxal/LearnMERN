@@ -10,6 +10,7 @@
 //  Model - How the basic entity will look, contain all fields , interact with database amd provide crud operatio. Created from schema. Higher level of abstracion.
 import mongoose from "mongoose";
 import bycrypt from "bcrypt";
+import jwt from "jsonwebtoken";
 const userSchema = new mongoose.Schema({
   username: {
     type: String,
@@ -29,6 +30,7 @@ const userSchema = new mongoose.Schema({
   },
 });
 
+// This method will run just before the save method.
 userSchema.pre("save", async function (next) {
   if (!this.isModified("password")) {
     next();
@@ -43,7 +45,24 @@ userSchema.pre("save", async function (next) {
     }
   }
 });
-// This user model will contain user details
+
+// This method will create a token using private key.
+// Will remember the userID, username and isAdmin field in the token.
+userSchema.methods.generateToken = async function () {
+  return jwt.sign(
+    {
+      userId: this._id,
+      username: this.username,
+      isAdmin: this.isAdmin,
+    },
+    process.env.PRIVATE_KEY, // this is private key or secret key.
+    {
+      expiresIn: "1d", // token valid till.
+    }
+  );
+};
+
+// This user model will contain user details.
 const User = new mongoose.model("User", userSchema);
 
 export default User;
