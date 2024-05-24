@@ -15,7 +15,7 @@ async function Home(req, res) {
 async function Register(req, res) {
   try {
     console.log(req.body);
-    const { username, phone, password, isAdmin } = req.body; // derefernce the array
+    const { email, username, phone, password, isAdmin } = req.body; // derefernce the array
     const userExist = await User.findOne({ username });
     // let encryptedPassword = await bycrypt.hash(password, 10);
     if (userExist) {
@@ -23,6 +23,7 @@ async function Register(req, res) {
     } else {
       // create and insertMany method of mongose is used for insert operation
       const addUser = await User.create({
+        email,
         username,
         phone,
         password,
@@ -42,6 +43,21 @@ async function Register(req, res) {
   }
 }
 
+async function Login(req, res) {
+  try {
+    const { email, password } = req.body;
+    console.log(req.body);
+    if (await User.findOne({ email })) {
+      res.send("<h1>This is Login page</h1>");
+    } else {
+      res.json({ msg: "Invalid Credential" });
+    }
+  } catch (error) {
+    console.log(error);
+    res.sendStatus(500);
+  }
+}
+
 async function About(req, res) {
   try {
     res.send("<h1>This is about page</h1>");
@@ -51,4 +67,4 @@ async function About(req, res) {
   }
 }
 
-export default { Home, Register, About };
+export default { Home, Register, About, Login };

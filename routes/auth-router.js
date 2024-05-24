@@ -12,6 +12,8 @@ router.route("/").get(Controller.Home);
 
 router.route("/register").post(Controller.Register);
 
+router.route("/login").get(Controller.Login).post(Controller.Login);
+
 router.route("/about").get(Controller.About);
 
 export default router;
