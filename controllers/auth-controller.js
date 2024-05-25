@@ -16,15 +16,15 @@ async function Register(req, res) {
   try {
     console.log(req.body);
     const { email, username, phone, password, isAdmin } = req.body; // derefernce the array
-    const userExist = await User.findOne({ username });
+    const userExist = await User.findOne({ email });
     // let encryptedPassword = await bycrypt.hash(password, 10);
     if (userExist) {
       res.send("<h1>User already exists please sign in to continue</h1>");
     } else {
       // create and insertMany method of mongose is used for insert operation
       const addUser = await User.create({
-        email,
         username,
+        email,
         phone,
         password,
         isAdmin,
@@ -43,18 +43,29 @@ async function Register(req, res) {
   }
 }
 
+// This is login function
 async function Login(req, res) {
   try {
-    const { email, password } = req.body;
-    console.log(req.body);
-    if (await User.findOne({ email })) {
-      res.send("<h1>This is Login page</h1>");
+    const { email, password } = req.body; // Holding data from user
+    const userExist = await User.findOne({ email }); // Check for user email in database
+    if (userExist) {
+      if (await userExist.comparePassword(password)) {
+        // using instance method (user-defined) created by userSchema
+        res.status(200).json({
+          // Returing the data if authorized
+          message: userExist,
+          token: await userExist.generateToken(),
+          userId: userExist._id,
+        });
+      } else {
+        res.sendStatus(401); //  return unauthorized
+      }
     } else {
-      res.json({ msg: "Invalid Credential" });
+      res.sendStatus(401); // return unauthorized
     }
   } catch (error) {
     console.log(error);
-    res.sendStatus(500);
+    res.sendStatus(500); //  internal server error
   }
 }
 

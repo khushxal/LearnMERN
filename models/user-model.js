@@ -66,6 +66,10 @@ userSchema.methods.generateToken = async function () {
   );
 };
 
+userSchema.methods.comparePassword = async function (password) {
+  return bycrypt.compare(password, this.password);
+};
+
 // This user model will contain user details.
 const User = new mongoose.model("User", userSchema);
 
