@@ -53,7 +53,7 @@ async function Login(req, res) {
         // using instance method (user-defined) created by userSchema
         res.status(200).json({
           // Returing the data if authorized
-          message: userExist,
+          message: "Login Successfull",
           token: await userExist.generateToken(),
           userId: userExist._id,
         });
