@@ -14,7 +14,6 @@ async function Home(req, res) {
 // Registration process is completed added user (CREATE OPERATION)
 async function Register(req, res) {
   try {
-    console.log(req.body);
     const { email, username, phone, password, isAdmin } = req.body; // derefernce the array
     const userExist = await User.findOne({ email });
     // let encryptedPassword = await bycrypt.hash(password, 10);
