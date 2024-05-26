@@ -30,4 +30,17 @@ const signupSchema = z.object({
     .max(10, { message: "Should contain 10 digit" }),
 });
 
-export { signupSchema, signinSchema };
+const contactSchema = z.object({
+  email: z
+    .string({ required_error: "Email cannot be empty" })
+    .email({ required_error: "Email only" })
+    .trim(),
+  phone: z
+    .string({ required_error: "Phone cannot be empty" })
+    .min(10, { message: "Number must contain 10 digits atleast" })
+    .max(10, { message: "Number must contain 10 digits only" })
+    .trim(),
+  query: z.string({ required_error: "Query cannot be empty" }).min(2).trim(),
+});
+
+export { signupSchema, signinSchema, contactSchema };

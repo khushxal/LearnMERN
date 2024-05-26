@@ -1,5 +1,6 @@
 // -- Following function are the controllers that are responsible for the functionallity part of the route  -- //
 import User from "../models/user-model.js";
+import ContactForm from "../models/contact-model.js";
 // import bycrypt from "bcrypt";
 async function Home(req, res, next) {
   try {
@@ -77,6 +78,7 @@ async function Login(req, res, next) {
   }
 }
 
+// This is about function
 async function About(req, res, next) {
   try {
     res.send("<h1>This is about page</h1>");
@@ -86,4 +88,16 @@ async function About(req, res, next) {
   }
 }
 
-export default { Home, Register, About, Login };
+// This is contact function
+async function Contact(req, res, next) {
+  try {
+    const { email, phone, query } = req.body;
+    const contactDetails = await ContactForm.create({ email, phone, query });
+    res.status(201).json({ message: "Query sent successfully" });
+  } catch (error) {
+    next(error);
+  }
+}
+
+// Exporting all the function
+export default { Home, Register, About, Login, Contact };
