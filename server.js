@@ -4,12 +4,14 @@ import express from "express";
 import router from "./routes/auth-router.js";
 import bodyParser from "body-parser";
 import connectDB from "./utils/db.js";
+import errorHandler from "./middleware/error-middleware.js";
 
 const app = express();
 const port = 3001;
 
 app.use(bodyParser.json());
 app.use("/api/auth", router);
+app.use(errorHandler);
 
 // -- Handling all req where the requested route is not available -- //
 

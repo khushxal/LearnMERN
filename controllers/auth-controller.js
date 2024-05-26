@@ -1,18 +1,16 @@
 // -- Following function are the controllers that are responsible for the functionallity part of the route  -- //
 import User from "../models/user-model.js";
 // import bycrypt from "bcrypt";
-
-async function Home(req, res) {
+async function Home(req, res, next) {
   try {
     res.send("<h1>Home Landing Page</h1>");
   } catch (error) {
-    console.log(error);
-    res.sendStatus(500);
+    next(error);
   }
 }
 
 // Registration process is completed added user (CREATE OPERATION)
-async function Register(req, res) {
+async function Register(req, res, next) {
   try {
     const { email, username, phone, password, isAdmin } = req.body; // derefernce the array
     const userExist = await User.findOne({ email });
@@ -38,12 +36,12 @@ async function Register(req, res) {
     }
   } catch (error) {
     console.log(error);
-    res.sendStatus(500);
+    next(error);
   }
 }
 
 // This is login function
-async function Login(req, res) {
+async function Login(req, res, next) {
   try {
     const { email, password } = req.body; // Holding data from user
     const userExist = await User.findOne({ email }); // Check for user email in database
@@ -57,23 +55,34 @@ async function Login(req, res) {
           userId: userExist._id,
         });
       } else {
-        res.sendStatus(401); //  return unauthorized
+        // res.sendStatus(401); //  return unauthorized
+        const error = {
+          status: 401,
+          message: "Invalid Credential",
+          extraDetails: "Unauthorized",
+        };
+        next(error);
       }
     } else {
-      res.sendStatus(401); // return unauthorized
+      const error = {
+        status: 401,
+        message: "Invalid Credential",
+        extraDetails: "Unauthorized",
+      };
+      next(error);
     }
   } catch (error) {
     console.log(error);
-    res.sendStatus(500); //  internal server error
+    next(error);
   }
 }
 
-async function About(req, res) {
+async function About(req, res, next) {
   try {
     res.send("<h1>This is about page</h1>");
   } catch (error) {
     console.log(error);
-    res.sendStatus(500);
+    next(error);
   }
 }
 
