@@ -1,0 +1,25 @@
+nav {
+  background-color: #e5e5cb;
+  box-shadow: 0px 0px 10px rgb(0, 0, 0.1);
+}
+
+.nav-link {
+  color: black !important;
+}
+
+li {
+  transition-duration: 0.8s;
+}
+
+li:hover {
+  font-size: large;
+  text-shadow: 5px 5px 10px rgb(0, 0, 0);
+}
+
+span {
+  transition-duration: 0.8s;
+}
+
+span:hover {
+  text-shadow: 5px 5px 10px rgb(0, 0, 0);
+}

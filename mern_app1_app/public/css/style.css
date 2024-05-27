@@ -1,0 +1,45 @@
+html {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  font-family: Poppins, sans-serif;
+  background-color: #e5e5cb;
+  font-weight: lighter;
+}
+
+.container {
+  height: 100vh;
+  color: white;
+}
+
+form {
+  border-radius: 10px;
+  color: black;
+  background-color: #eee;
+  transition-duration: 2s;
+}
+
+form:hover {
+  box-shadow: 0px 0px 20px rgb(255, 255, 255);
+}
+
+.card {
+  height: 100vh;
+  background-color: #353535;
+  transition-duration: 1s;
+  border-radius: 20px;
+}
+
+.card:hover {
+  box-shadow: 0px 0px 20px rgb(0, 0, 0.1);
+}
+
+img {
+  transition-duration: 1s;
+}
+
+img:hover {
+  box-shadow: 0px 0px 20px rgb(119, 119, 119);
+}
