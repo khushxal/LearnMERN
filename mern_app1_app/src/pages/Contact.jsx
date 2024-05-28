@@ -2,10 +2,10 @@ import React from "react";
 import "../css/Contact.css";
 function Contact() {
   return (
-    <div className="container mb-3">
+    <div className="container mb-5">
       <div className="card">
-        <span className="fs-2 mx-4 fw-normal">Contact Form</span>
-        <form className="form p-5 border-0 mb-auto mx-3 fs-5 fw-light">
+        <span className="mt-5 fs-2 mx-4 fw-normal">Contact Form</span>
+        <form className="form p-5 border-0 mb-1 mx-3 fs-5 fw-light">
           <div className="form-group">
             <label htmlFor="exampleFormControlInput1">Email address</label>
             <input type="email" className="form-control" />
@@ -19,8 +19,8 @@ function Contact() {
             <textarea className="form-control" rows={10} defaultValue={""} />
           </div>
         </form>
-        <div className="container text-center mt-2">
-          <button className="btn" type="submit">
+        <div className="text-center">
+          <button className="btn mx-3 w-25" type="submit">
             Will reach you out
           </button>
         </div>
