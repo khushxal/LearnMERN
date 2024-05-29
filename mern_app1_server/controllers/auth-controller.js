@@ -12,13 +12,13 @@ async function Home(req, res, next) {
 
 // Registration process is completed added user (CREATE OPERATION)
 async function Register(req, res, next) {
+  console.log(req.body);
   try {
     const { email, username, phone, password, isAdmin } = req.body; // derefernce the array
-    console.log(req.body);
     const userExist = await User.findOne({ email });
     // let encryptedPassword = await bycrypt.hash(password, 10);
     if (userExist) {
-      res.send("<h1>User already exists please sign in to continue</h1>");
+      res.json({ msg: "User already registered, you must login" });
     } else {
       // create and insertMany method of mongose is used for insert operation
       const addUser = await User.create({
@@ -31,7 +31,7 @@ async function Register(req, res, next) {
       // This JWT token is send to the client and will be used for authentication and authorization.
       // This token needed to be stored at the client side using cookies or local storage.
       res.status(201).json({
-        msg: addUser, // object returned after added to the the database
+        msg: "User Registered", // object returned after added to the the database
         token: await addUser.generateToken(),
         userId: addUser._id.toString(), // Mongo created object id
       });

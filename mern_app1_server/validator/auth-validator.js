@@ -26,8 +26,7 @@ const signupSchema = z.object({
     .min(7, { message: "Password should contain atleast 7 character" }),
   phone: z
     .string({ required_error: "Phone number is required" })
-    .min(10, { message: "Should contain 10 digit" })
-    .max(10, { message: "Should contain 10 digit" }),
+    .max(10, { message: "Should contain 10 digit only" }),
 });
 
 const contactSchema = z.object({
