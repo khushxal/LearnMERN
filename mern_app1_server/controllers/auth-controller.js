@@ -14,6 +14,7 @@ async function Home(req, res, next) {
 async function Register(req, res, next) {
   try {
     const { email, username, phone, password, isAdmin } = req.body; // derefernce the array
+    console.log(req.body);
     const userExist = await User.findOne({ email });
     // let encryptedPassword = await bycrypt.hash(password, 10);
     if (userExist) {

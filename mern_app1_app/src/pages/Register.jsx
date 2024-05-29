@@ -1,6 +1,39 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 function Register() {
+  const URI = "http://localhost:3001/";
+
+  const [data, setData] = useState({
+    email: "",
+    username: "",
+    mobile: "",
+    password: "",
+  });
+
+  const [field_data, setFieldData] = useState("");
+
+  function handleSubmit(event) {
+    try {
+      const response = axios.post(URI + "/register", data);
+      console.log(response);
+    } catch (error) {}
+    event.preventDefault();
+    setData({
+      email: "",
+      username: "",
+      mobile: "",
+      password: "",
+    });
+  }
+
+  function handleChange(event) {
+    const { name, value } = event.target;
+    setFieldData(function (prevValue) {
+      return { ...prevValue, [name]: value };
+    });
+  }
+
   return (
     <div className="container col px-4 py-5 mb-3">
       <div className="card row align-items-center g-lg-5 py-5">
@@ -13,6 +46,8 @@ function Register() {
                 id="floatingInput"
                 placeholder="name@example.com"
                 fdprocessedid="ax6fo5"
+                onChange={handleChange}
+                value={field_data}
               />
               <label htmlFor="floatingInput">Email address</label>
             </div>
@@ -23,6 +58,8 @@ function Register() {
                 id="floatingInput"
                 placeholder="name@example.com"
                 fdprocessedid="ax6fo5"
+                onChange={handleChange}
+                value={field_data}
               />
               <label htmlFor="floatingInput">Username</label>
             </div>
@@ -33,6 +70,8 @@ function Register() {
                 id="floatingInput"
                 placeholder="name@example.com"
                 fdprocessedid="ax6fo5"
+                onChange={handleChange}
+                value={field_data}
               />
               <label htmlFor="floatingInput">Mobile</label>
             </div>
@@ -43,10 +82,13 @@ function Register() {
                 id="floatingPassword"
                 placeholder="Password"
                 fdprocessedid="liawmc"
+                onChange={handleChange}
+                value={field_data}
               />
               <label htmlFor="floatingPassword">Password</label>
             </div>
             <button
+              onSubmit={handleSubmit}
               className="w-100 btn btn-lg  "
               type="submit"
               fdprocessedid="e2o1y"
