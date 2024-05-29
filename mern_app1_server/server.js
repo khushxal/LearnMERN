@@ -5,14 +5,15 @@ import router from "./routes/auth-router.js";
 import bodyParser from "body-parser";
 import connectDB from "./utils/db.js";
 import errorHandler from "./middleware/error-middleware.js";
-
+import cors from "cors";
 const app = express();
 const port = 3001;
 
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use("/api/auth", router);
 app.use(errorHandler);
-
+app.use(cors);
 // -- Handling all req where the requested route is not available -- //
 
 app.get("/*", function (req, res) {

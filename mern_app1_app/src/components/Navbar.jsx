@@ -4,37 +4,37 @@ import "../css/Navbar.css";
 function Navbar() {
   return (
     <div>
-      <nav class="d-flex flex-wrap justify-content-center py-2 mb-3 border-bottom">
+      <nav className="d-flex flex-wrap justify-content-center py-2 mb-3 border-bottom">
         <Link
           to="/"
-          class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none"
+          className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none"
         >
-          <span class="fs-3 fw-bolder">MERN App</span>
+          <span className="fs-3 fw-bolder">MERN App</span>
         </Link>
 
-        <ul class="nav nav-pills fs-6 fw-light">
-          <li class="nav-item">
-            <Link to="/" class="nav-link">
+        <ul className="nav nav-pills fs-6 fw-light">
+          <li className="nav-item">
+            <Link to="/" className="nav-link">
               Home
             </Link>
           </li>
-          <li class="nav-item">
-            <Link to="/about" class="nav-link">
+          <li className="nav-item">
+            <Link to="/about" className="nav-link">
               About
             </Link>
           </li>
-          <li class="nav-item">
-            <Link to="/contact" class="nav-link">
+          <li className="nav-item">
+            <Link to="/contact" className="nav-link">
               Contact
             </Link>
           </li>
-          <li class="nav-item">
-            <Link to="/register" class="nav-link">
+          <li className="nav-item">
+            <Link to="/register" className="nav-link">
               Sign Up
             </Link>
           </li>
-          <li class="nav-item">
-            <Link to="/login" class="nav-link">
+          <li className="nav-item">
+            <Link to="/login" className="nav-link">
               Sign In
             </Link>
           </li>
