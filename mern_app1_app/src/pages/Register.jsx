@@ -2,28 +2,33 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 function Register() {
-  const URI = "http://localhost:3001/api/auth";
+  const URI = "http://localhost:3001/api/auth/register";
+
+  var response = {};
 
   const [userdata, setUserData] = useState({
     email: "",
-    name: "",
-    mobile: "",
+    username: "",
+    phone: "",
     password: "",
   });
 
   function handleChange(e) {
-    console.log(e.target);
     const { name, value } = e.target;
     setUserData((preVal) => {
       return { ...preVal, [name]: value };
     });
   }
 
-  function handleSubmit(e) {
-    console.log(userdata);
-    try {
-    } catch (error) {}
+  async function handleSubmit(e) {
     e.preventDefault();
+    try {
+      response = await axios.post(URI, userdata);
+      console.log(response);
+      alert(response.data.msg);
+    } catch (error) {
+      console.log(error);
+    }
   }
   return (
     <div className="container col px-4 py-5 mb-3">
@@ -31,6 +36,7 @@ function Register() {
         <div className="col-md-12 mx-auto col-lg-8">
           <form
             onSubmit={handleSubmit}
+            method="post"
             className="p-4 p-md-5 border rounded-3 bg-light fw-light"
           >
             <div className="form-floating mb-3">
@@ -38,7 +44,8 @@ function Register() {
                 type="email"
                 name="email"
                 className="form-control"
-                id="floatingInput"
+                id="floatingInput1"
+                key={1}
                 placeholder="name@example.com"
                 fdprocessedid="ax6fo5"
                 onChange={handleChange}
@@ -48,9 +55,10 @@ function Register() {
             <div className="form-floating mb-3">
               <input
                 type="text"
-                name="name"
+                name="username"
                 className="form-control"
-                id="floatingInput"
+                id="floatingInput2"
+                key={2}
                 placeholder="name@example.com"
                 fdprocessedid="ax6fo5"
                 onChange={handleChange}
@@ -61,9 +69,10 @@ function Register() {
             <div className="form-floating mb-3">
               <input
                 type="text"
-                name="mobile"
+                name="phone"
                 className="form-control"
-                id="floatingInput"
+                id="floatingInput3"
+                key={3}
                 placeholder="name@example.com"
                 fdprocessedid="ax6fo5"
                 onChange={handleChange}
@@ -77,6 +86,7 @@ function Register() {
                 name="password"
                 className="form-control"
                 id="floatingPassword"
+                key={4}
                 placeholder="Password"
                 fdprocessedid="liawmc"
                 onChange={handleChange}
@@ -89,7 +99,7 @@ function Register() {
               className="w-100 btn btn-lg  "
               fdprocessedid="e2o1y"
             >
-              Start Learning
+              {!response.data ? "Start learning" : response.data.msg}
             </button>
             <div className="mt-3 text-center">
               <small className="text-muted">
