@@ -38,3 +38,13 @@ img {
 img:hover {
   box-shadow: 0px 0px 20px rgb(119, 119, 119);
 }
+
+input,
+textarea {
+  transition-duration: 0.8s;
+}
+
+input:hover,
+textarea:hover {
+  box-shadow: 0px 0px 20px rgb(0, 0, 1);
+}
