@@ -7,23 +7,9 @@ import {
   contactSchema,
 } from "../validator/auth-validator.js";
 import cors from "cors";
-const app = express();
-app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.setHeader(
-    "Access-Control-Allow-Methods",
-    "GET, POST, OPTIONS, PUT, PATCH, DELETE"
-  );
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
-  next();
-});
 
 // -- Using the Express.Router() and holding it in router variable --//
 const router = express.Router();
-app.use(cors());
 
 // -- Following routes are routed by router -- //
 
