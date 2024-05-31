@@ -18,13 +18,14 @@ function Contact() {
   }
 
   return (
-    <div className="container mb-5">
+    <div className="container">
       <div className="card">
         <span className="mt-5 fs-2 mx-4 fw-normal">Contact Form</span>
         <form
           onSubmit={handleSubmit}
           method="post"
           className="form p-5 border-0 mb-1 mx-3 fs-5 fw-light"
+          autoComplete="off"
         >
           <div className="form-group">
             <label htmlFor="exampleFormControlInput1">Email address</label>

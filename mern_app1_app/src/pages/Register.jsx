@@ -31,10 +31,11 @@ function Register() {
     }
   }
   return (
-    <div className="container col px-4 py-5 mb-3">
+    <div className="container col px-4 py-5">
       <div className="card row align-items-center g-lg-5 py-5">
-        <div className="col-md-12 mx-auto col-lg-8">
+        <div className="col-md-12 mx-auto col-lg-7">
           <form
+            autoComplete="off"
             onSubmit={handleSubmit}
             method="post"
             className="p-4 p-md-5 border rounded-3 bg-light fw-light"
@@ -112,7 +113,7 @@ function Register() {
             </small>
           </form>
         </div>
-        <div className="col-lg-4 text-center text-lg-start">
+        <div className="col-lg-5 text-center text-lg-start">
           <h1 className="display-4 fw-bold lh-1 mb-3">Radhe Radhe,</h1>
           <p className="col-lg-5 fs-4 fw-light">
             Why Sign Up? <br />

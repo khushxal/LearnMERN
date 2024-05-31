@@ -6,6 +6,8 @@ body {
 
 .container {
   color: white;
+  margin-bottom: 50px;
+  margin-top: 50px;
 }
 
 form {
@@ -25,6 +27,13 @@ form:hover {
   background-color: #353535;
   transition-duration: 1s;
   border-radius: 20px;
+  overflow: auto;
+}
+
+.card::-webkit-scrollbar,
+form::-webkit-scrollbar,
+html::-webkit-scrollbar {
+  display: none;
 }
 
 .card:hover {

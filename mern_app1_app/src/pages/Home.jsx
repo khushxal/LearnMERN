@@ -2,7 +2,7 @@ import React from "react";
 import "../css/Home.css";
 function Home() {
   return (
-    <div className="container mb-3">
+    <div className="container">
       <div className="card">
         <div className="row flex-lg-row-reverse align-items-center g-5 my-auto mx-auto">
           <div className="col-10 col-sm-8 col-lg-6">

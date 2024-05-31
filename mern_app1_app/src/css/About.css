@@ -1,0 +1,24 @@
+.row > h1 {
+  font-size: 80px;
+}
+
+.col > img {
+  border-radius: 20px;
+  height: 650px;
+  width: 475px;
+  transition: transform 1s ease-in-out;
+}
+
+.col > img:hover {
+  transform: scale(1.1);
+}
+
+p > li {
+  margin-top: 10px;
+  font-size: large;
+}
+
+p > li:hover {
+  font-size: larger;
+  text-shadow: 5px 5px 10px rgb(0, 0, 0);
+}
