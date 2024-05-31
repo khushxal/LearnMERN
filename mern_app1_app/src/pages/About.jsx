@@ -11,8 +11,8 @@ function About() {
             <p className="mt-2 ms-2 fs-3">Radhe Radhe ❤, </p>
             <p className="mt-2 ms-2 fs-4">
               This is me (Khushal Verma). Hope you love the website created by
-              this body. This website is build using MERN Stack (cause it get's
-              easy to build using MERN 😂).
+              this body. This website is build using MERN Stack (cause it's easy
+              to build using MERN 😂).
             </p>
             <p className="mt-2 ms-2 fs-4">
               Currently in 3rd year of B.Tech CSE Core with 1500 others🤦‍♂️.
