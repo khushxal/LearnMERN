@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import "../css/Login.css";
 import { Link } from "react-router-dom";
+import axios from "axios";
 function Login() {
+  const URI = "http://localhost:3001/api/auth/login";
+
   const [data, setData] = useState({
     email: "",
     password: "",
@@ -14,9 +17,15 @@ function Login() {
     });
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
-    console.log(data);
+    try {
+      const res = await axios.post(URI, data);
+      console.log(res);
+      alert(res.data.message);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   return (

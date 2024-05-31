@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import "../css/Contact.css";
+import axios from "axios";
 function Contact() {
+  const URI = "http://localhost:3001/api/auth/contact";
+
   const [contactdata, setContactData] = useState({
     email: "",
     phone: "",
@@ -12,9 +15,15 @@ function Contact() {
     setContactData({ ...contactdata, [name]: value });
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
-    console.log(contactdata);
+    try {
+      const res = await axios.post(URI, contactdata);
+      console.log(res);
+      alert(res.data.msg);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   return (

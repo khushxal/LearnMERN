@@ -4,14 +4,14 @@ import axios from "axios";
 function Register() {
   const URI = "http://localhost:3001/api/auth/register";
 
-  var response = {};
-
   const [userdata, setUserData] = useState({
     email: "",
     username: "",
     phone: "",
     password: "",
   });
+
+  const [message, setMessage] = useState("");
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -23,19 +23,19 @@ function Register() {
   async function handleSubmit(e) {
     e.preventDefault();
     try {
-      response = await axios.post(URI, userdata);
-      console.log(response);
-      alert(response.data.msg);
+      const res = await axios.post(URI, userdata);
+      alert(res.data.msg);
     } catch (error) {
       console.log(error);
     }
   }
+
   return (
     <div className="container col px-4 py-5">
       <div className="card row align-items-center g-lg-5 py-5">
         <div className="col-md-12 mx-auto col-lg-7">
           <form
-            autoComplete="off"
+            // autoComplete="off"
             onSubmit={handleSubmit}
             method="post"
             className="p-4 p-md-5 border rounded-3 bg-light fw-light"
@@ -100,7 +100,7 @@ function Register() {
               className="w-100 btn btn-lg  "
               fdprocessedid="e2o1y"
             >
-              {!response.data ? "Start learning" : response.data.msg}
+              Start Learing
             </button>
             <div className="mt-3 text-center">
               <small className="text-muted">

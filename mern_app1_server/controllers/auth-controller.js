@@ -59,7 +59,7 @@ async function Login(req, res, next) {
       } else {
         // res.sendStatus(401); //  return unauthorized
         const error = {
-          status: 401,
+          status: 200,
           message: "Invalid Credential",
           extraDetails: "Unauthorized",
         };
@@ -67,7 +67,7 @@ async function Login(req, res, next) {
       }
     } else {
       const error = {
-        status: 401,
+        status: 200,
         message: "Invalid Credential",
         extraDetails: "Unauthorized",
       };
@@ -94,7 +94,7 @@ async function Contact(req, res, next) {
   try {
     const { email, phone, query } = req.body;
     const contactDetails = await ContactForm.create({ email, phone, query });
-    res.status(201).json({ message: "Query sent successfully" });
+    res.status(201).json({ msg: "Query sent successfully" });
   } catch (error) {
     next(error);
   }
