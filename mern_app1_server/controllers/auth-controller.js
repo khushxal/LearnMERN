@@ -37,7 +37,7 @@ async function Register(req, res, next) {
       });
     }
   } catch (error) {
-    console.log("error : ", error);
+    console.log(error);
     next(error);
   }
 }
@@ -52,7 +52,7 @@ async function Login(req, res, next) {
         // using instance method (user-defined) created by userSchema
         res.status(200).json({
           // Returing the data if authorized
-          msg: "Login Successfull",
+          msg: "Log-in successfull",
           token: await userExist.generateToken(),
           userId: userExist._id,
         });
