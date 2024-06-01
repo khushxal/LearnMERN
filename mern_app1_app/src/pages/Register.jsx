@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { UseAuth } from "../auth/auth.jsx";
 import axios from "axios";
 function Register() {
   const URI = "http://localhost:3001/api/auth/register";
 
   const navigate = useNavigate();
+
+  const { storeToken } = UseAuth();
 
   const [userdata, setUserData] = useState({
     email: "",
@@ -24,9 +27,9 @@ function Register() {
     e.preventDefault();
     try {
       const res = await axios.post(URI, userdata);
-      console.log(res);
+      if (res.data.token) storeToken(res.data.token);
       alert(res.data.msg);
-      if (res.status == 200 || res.status == 208) {
+      if (res.status == 201) {
         navigate("/login", {
           state: {
             email: userdata.email,

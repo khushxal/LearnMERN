@@ -7,6 +7,7 @@ import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import Logout from "./pages/Logout";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/logout" element={<Logout />} />
           <Route path="/*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

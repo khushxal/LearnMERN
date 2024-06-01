@@ -1,7 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../css/Navbar.css";
+import { UseAuth } from "../auth/auth";
 function Navbar() {
+  const { isLoggedIn } = UseAuth();
   return (
     <div>
       <nav className="d-flex flex-wrap justify-content-center py-2 mb-3 border-bottom">
@@ -28,16 +30,26 @@ function Navbar() {
               Contact
             </Link>
           </li>
-          <li className="nav-item">
-            <Link to="/register" className="nav-link">
-              Sign Up
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link to="/login" className="nav-link">
-              Sign In
-            </Link>
-          </li>
+          {isLoggedIn ? (
+            <li className="nav-item">
+              <Link to="/logout" className="nav-link">
+                Logout
+              </Link>
+            </li>
+          ) : (
+            <>
+              <li className="nav-item">
+                <Link to="/register" className="nav-link">
+                  Sign Up
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/login" className="nav-link">
+                  Sign In
+                </Link>
+              </li>
+            </>
+          )}
         </ul>
       </nav>
     </div>
