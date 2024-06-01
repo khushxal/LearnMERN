@@ -37,7 +37,7 @@ async function Register(req, res, next) {
       });
     }
   } catch (error) {
-    console.log(error);
+    console.log("error : ", error);
     next(error);
   }
 }
