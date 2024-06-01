@@ -18,7 +18,7 @@ async function Register(req, res, next) {
     const userExist = await User.findOne({ email });
     // let encryptedPassword = await bycrypt.hash(password, 10);
     if (userExist) {
-      res.json({ msg: "User already registered, you must login" });
+      res.status(208).json({ msg: "User with this email already present" });
     } else {
       // create and insertMany method of mongose is used for insert operation
       const addUser = await User.create({
@@ -52,7 +52,7 @@ async function Login(req, res, next) {
         // using instance method (user-defined) created by userSchema
         res.status(200).json({
           // Returing the data if authorized
-          message: "Login Successfull",
+          msg: "Login Successfull",
           token: await userExist.generateToken(),
           userId: userExist._id,
         });
@@ -60,7 +60,7 @@ async function Login(req, res, next) {
         // res.sendStatus(401); //  return unauthorized
         const error = {
           status: 200,
-          message: "Invalid Credential",
+          msg: "Invalid Credential",
           extraDetails: "Unauthorized",
         };
         next(error);
@@ -68,7 +68,7 @@ async function Login(req, res, next) {
     } else {
       const error = {
         status: 200,
-        message: "Invalid Credential",
+        msg: "Invalid Credential",
         extraDetails: "Unauthorized",
       };
       next(error);

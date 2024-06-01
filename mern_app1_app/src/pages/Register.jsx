@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 function Register() {
   const URI = "http://localhost:3001/api/auth/register";
+
+  const navigate = useNavigate();
 
   const [userdata, setUserData] = useState({
     email: "",
@@ -10,8 +12,6 @@ function Register() {
     phone: "",
     password: "",
   });
-
-  const [message, setMessage] = useState("");
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -24,7 +24,22 @@ function Register() {
     e.preventDefault();
     try {
       const res = await axios.post(URI, userdata);
+      console.log(res);
       alert(res.data.msg);
+      if (res.status == 200 || res.status == 208) {
+        navigate("/login", {
+          state: {
+            email: userdata.email,
+            password: userdata.password,
+          },
+        });
+      }
+      setUserData({
+        email: "",
+        username: "",
+        phone: "",
+        password: "",
+      });
     } catch (error) {
       console.log(error);
     }
@@ -50,6 +65,7 @@ function Register() {
                 placeholder="name@example.com"
                 fdprocessedid="ax6fo5"
                 onChange={handleChange}
+                value={userdata.email}
               />
               <label htmlFor="floatingInput">Email address</label>
             </div>
@@ -63,7 +79,7 @@ function Register() {
                 placeholder="name@example.com"
                 fdprocessedid="ax6fo5"
                 onChange={handleChange}
-                value={userdata.name}
+                value={userdata.username}
               />
               <label htmlFor="floatingInput">Username</label>
             </div>
@@ -77,7 +93,7 @@ function Register() {
                 placeholder="name@example.com"
                 fdprocessedid="ax6fo5"
                 onChange={handleChange}
-                value={userdata.mobile}
+                value={userdata.phone}
               />
               <label htmlFor="floatingInput">Mobile</label>
             </div>

@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import "../css/Login.css";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import axios from "axios";
 function Login() {
   const URI = "http://localhost:3001/api/auth/login";
 
+  const location = useLocation();
+
   const [data, setData] = useState({
-    email: "",
-    password: "",
+    email: location.state ? location.state.email : "",
+    password: location.state ? location.state.password : "",
   });
 
   function handleChange(e) {
@@ -21,8 +23,11 @@ function Login() {
     e.preventDefault();
     try {
       const res = await axios.post(URI, data);
-      console.log(res);
-      alert(res.data.message);
+      alert(res.data.msg);
+      setData({
+        email: "",
+        password: "",
+      });
     } catch (error) {
       console.log(error);
     }
