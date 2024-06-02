@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import "../css/Contact.css";
 import axios from "axios";
+import { UseAuth } from "../auth/auth";
 function Contact() {
   const URI = "http://localhost:3001/api/auth/contact";
 
+  const { userData } = UseAuth();
+
   const [contactdata, setContactData] = useState({
-    email: "",
-    phone: "",
+    email: "" || userData.email,
+    phone: "" || userData.phone,
     query: "",
   });
 

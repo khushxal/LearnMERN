@@ -1,12 +1,12 @@
 import express from "express";
 import Controller from "../controllers/auth-controller.js";
 import validate from "../middleware/validation-middleware.js";
+import AuthMiddleware from "../middleware/auth-middleware.js";
 import {
   signupSchema,
   signinSchema,
   contactSchema,
 } from "../validator/auth-validator.js";
-import cors from "cors";
 
 // -- Using the Express.Router() and holding it in router variable --//
 const router = express.Router();
@@ -27,6 +27,6 @@ router
   .get(Controller.Contact)
   .post(validate(contactSchema), Controller.Contact);
 
-router.route("/about").get(Controller.About);
+router.route("/user").get(AuthMiddleware, Controller.UserData);
 
 export default router;

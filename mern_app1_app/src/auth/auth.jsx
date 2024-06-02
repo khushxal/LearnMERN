@@ -1,9 +1,10 @@
-import { createContext, useContext, useState } from "react";
-
+import axios from "axios";
+import { createContext, useContext, useEffect, useState } from "react";
 export const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
   const [token, setToken] = useState(localStorage.getItem("token"));
+  const [userData, setUserData] = useState("");
 
   const isLoggedIn = !!token;
 
@@ -16,8 +17,30 @@ export function AuthProvider({ children }) {
     localStorage.removeItem("token");
   }
 
+  async function isAuthorizedUser() {
+    try {
+      const res = await axios.get("http://localhost:3001/api/auth/user", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      if (res) {
+        console.log(res.data.userData);
+        setUserData(res.data.userData);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(function () {
+    isAuthorizedUser();
+  }, []);
+
   return (
-    <AuthContext.Provider value={{ storeToken, deleteToken, isLoggedIn }}>
+    <AuthContext.Provider
+      value={{ storeToken, deleteToken, isLoggedIn, userData }}
+    >
       {children}
     </AuthContext.Provider>
   );

@@ -56,12 +56,12 @@ userSchema.methods.generateToken = async function () {
   return jwt.sign(
     {
       userId: this._id,
-      username: this.username,
+      email: this.email,
       isAdmin: this.isAdmin,
     },
     process.env.PRIVATE_KEY, // this is private key or secret key.
     {
-      expiresIn: "1d", // token valid till.
+      expiresIn: "30d", // token valid till.
     }
   );
 };

@@ -100,5 +100,15 @@ async function Contact(req, res, next) {
   }
 }
 
+// This is User
+function UserData(req, res, next) {
+  try {
+    const userData = req.user;
+    res.status(200).json({ userData });
+  } catch (error) {
+    next(error);
+  }
+}
+
 // Exporting all the function
-export default { Home, Register, About, Login, Contact };
+export default { Home, Register, About, Login, Contact, UserData };
