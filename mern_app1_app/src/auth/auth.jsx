@@ -25,8 +25,7 @@ export function AuthProvider({ children }) {
         },
       });
       if (res) {
-        console.log(res.data.userData);
-        setUserData(res.data.userData);
+        setUserData(await res.data.userData);
       }
     } catch (error) {
       console.log(error);

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../css/Contact.css";
 import axios from "axios";
 import { UseAuth } from "../auth/auth";
@@ -8,8 +8,8 @@ function Contact() {
   const { userData } = UseAuth();
 
   const [contactdata, setContactData] = useState({
-    email: "" || userData.email,
-    phone: "" || userData.phone,
+    email: userData ? userData.email : "",
+    phone: userData ? userData.phone : "",
     query: "",
   });
 
@@ -67,7 +67,6 @@ function Contact() {
               name="query"
               className="form-control"
               rows={10}
-              defaultValue=""
               onChange={handleChange}
               value={contactdata.query}
               required
