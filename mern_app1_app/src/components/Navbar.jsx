@@ -30,12 +30,20 @@ function Navbar() {
               Contact
             </Link>
           </li>
+
           {isLoggedIn ? (
-            <li className="nav-item">
-              <Link to="/logout" className="nav-link">
-                Logout
-              </Link>
-            </li>
+            <>
+              <li className="nav-item">
+                <Link to="/books" className="nav-link">
+                  Books
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/logout" className="nav-link">
+                  Logout
+                </Link>
+              </li>
+            </>
           ) : (
             <>
               <li className="nav-item">
