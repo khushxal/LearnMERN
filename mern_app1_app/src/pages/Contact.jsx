@@ -22,8 +22,8 @@ function Contact() {
     e.preventDefault();
     try {
       const res = await axios.post(URI, contactdata);
-      console.log(res);
       alert(res.data.msg);
+      setContactData(contactForm);
     } catch (error) {
       console.log(error);
     }

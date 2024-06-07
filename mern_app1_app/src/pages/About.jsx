@@ -1,14 +1,19 @@
 import React from "react";
 import "../css/About.css";
 import khushalImg from "../image/image khushal Verma.jpg";
+import { UseAuth } from "../auth/auth";
 function About() {
+  const { userData } = UseAuth();
+
   return (
     <div className="container">
       <div className="card">
         <div className="row fw-normal">
           <h1 className="mt-2 ms-2 text-center">About Developer</h1>
           <div className="col-7 fw-light">
-            <p className="mt-2 ms-2 fs-3">Radhe Radhe ❤, </p>
+            <p className="mt-2 ms-2 fs-3">
+              Radhe Radhe {userData && userData.username} ❤,
+            </p>
             <p className="mt-2 ms-2 fs-4">
               This is me (Khushal Verma). Hope you love the website created by
               this body. This website is build using MERN Stack (cause it's easy
