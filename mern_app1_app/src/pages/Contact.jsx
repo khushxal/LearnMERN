@@ -22,7 +22,11 @@ function Contact() {
     e.preventDefault();
     try {
       const res = await axios.post(URI, contactdata);
-      console.log(res);
+      setContactData({
+        email: userData ? userData.email : "",
+        phone: userData ? userData.phone : "",
+        query: "",
+      });
       alert(res.data.msg);
     } catch (error) {
       console.log(error);
