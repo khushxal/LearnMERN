@@ -89,17 +89,6 @@ async function About(req, res, next) {
   }
 }
 
-// This is contact function
-async function Contact(req, res, next) {
-  try {
-    const { email, phone, query } = req.body;
-    const contactDetails = await ContactForm.create({ email, phone, query });
-    res.status(201).json({ msg: "Query sent successfully" });
-  } catch (error) {
-    next(error);
-  }
-}
-
 // This is User
 function UserData(req, res, next) {
   try {
@@ -111,4 +100,4 @@ function UserData(req, res, next) {
 }
 
 // Exporting all the function
-export default { Home, Register, About, Login, Contact, UserData };
+export default { Home, Register, About, Login, UserData };

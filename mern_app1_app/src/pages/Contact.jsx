@@ -3,7 +3,7 @@ import "../css/Contact.css";
 import axios from "axios";
 import { UseAuth } from "../auth/auth";
 function Contact() {
-  const URI = "http://localhost:3001/api/auth/contact";
+  const URI = "http://localhost:3001/api/contact/contact";
 
   const { userData } = UseAuth();
 
@@ -22,8 +22,8 @@ function Contact() {
     e.preventDefault();
     try {
       const res = await axios.post(URI, contactdata);
+      console.log(res);
       alert(res.data.msg);
-      setContactData(contactForm);
     } catch (error) {
       console.log(error);
     }

@@ -3,6 +3,7 @@ dot.config();
 import express from "express";
 import authRouter from "./routes/auth-router.js";
 import bookRouter from "./routes/book-router.js";
+import contactRouter from "./routes/contact-router.js";
 import bodyParser from "body-parser";
 import connectDB from "./utils/db.js";
 import errorHandler from "./middleware/error-middleware.js";
@@ -28,6 +29,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use("/api/auth", authRouter);
 app.use("/api/data", bookRouter);
+app.use("/api/contact", contactRouter);
 app.use(errorHandler);
 // -- Handling all req where the requested route is not available -- //
 

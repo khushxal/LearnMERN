@@ -32,7 +32,7 @@ const signupSchema = z.object({
 const contactSchema = z.object({
   email: z
     .string({ required_error: "Email cannot be empty" })
-    .email({ required_error: "Email only" })
+    .email({ required_error: "Invalid Email Address" })
     .trim(),
   phone: z
     .string({ required_error: "Phone cannot be empty" })
