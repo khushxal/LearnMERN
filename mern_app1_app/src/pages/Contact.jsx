@@ -47,7 +47,6 @@ function Contact() {
               className="form-control"
               onChange={handleChange}
               value={contactdata.email}
-              required
             />
           </div>
           <div className="form-group">
@@ -58,7 +57,6 @@ function Contact() {
               className="form-control"
               onChange={handleChange}
               value={contactdata.phone}
-              required
             />
           </div>
           <div className="form-group">
@@ -69,7 +67,6 @@ function Contact() {
               rows={10}
               onChange={handleChange}
               value={contactdata.query}
-              required
             />
           </div>
           <div className="text-center">
