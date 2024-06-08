@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
-import "../css/Contact.css";
-import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
 import { UseAuth } from "../auth/auth";
+import axios from "axios";
+import "../css/Contact.css";
+
 function Contact() {
   const URI = "http://localhost:3001/api/contact/contact";
 
@@ -27,7 +29,13 @@ function Contact() {
         phone: userData ? userData.phone : "",
         query: "",
       });
-      alert(res.data.msg);
+      if (res.status == 201) {
+        toast.success(res.data.msg, { theme: "dark" });
+      } else {
+        toast.error(res.data.msg, {
+          style: { backgroundColor: "#353535" },
+        });
+      }
     } catch (error) {
       console.log(error);
     }
