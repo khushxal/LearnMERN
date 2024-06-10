@@ -1,8 +1,8 @@
 import express from "express";
-import books from "../controllers/book-controller.js";
+import controller from "../controllers/book-controller.js";
 
 const router = express.Router();
 
-router.route("/books").get(books);
+router.route("/books").get(controller.book);
 
 export default router;

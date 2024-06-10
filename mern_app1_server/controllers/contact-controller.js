@@ -10,4 +10,4 @@ async function Contact(req, res, next) {
   }
 }
 
-export default Contact;
+export default { Contact };
