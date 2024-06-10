@@ -18,6 +18,6 @@ router
 
 router.route("/login").post(validate(signinSchema), Controller.Login); // using ZOD validation
 
-router.route("/user").get(AuthMiddleware, Controller.UserData);
+router.route("/user").get(AuthMiddleware, Controller.UserData); //  using auth middleware to verify token and checking in database
 
 export default router;

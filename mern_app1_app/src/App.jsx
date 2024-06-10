@@ -8,8 +8,9 @@ import NotFound from "./pages/NotFound";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Logout from "./pages/Logout";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Books from "./pages/Books";
+import Admin from "./pages/Admin";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 function App() {
   return (
     <>
@@ -23,6 +24,7 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/logout" element={<Logout />} />
           <Route path="/books" element={<Books />} />
+          <Route path="/admin" element={<Admin />} />
           <Route path="/*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

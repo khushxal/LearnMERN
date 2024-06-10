@@ -44,6 +44,6 @@ app.get("/*", function (req, res) {
 // -- Running the server only if the database is connected-- //
 connectDB().then(function () {
   app.listen(port, function (req, res) {
-    console.log(`Server hosted at http://localhost:${port}/api/auth`);
+    console.log(`Server hosted at http://localhost:${port}`);
   });
 });
