@@ -12,7 +12,6 @@ async function Home(req, res, next) {
 
 // Registration process is completed added user (CREATE OPERATION)
 async function Register(req, res, next) {
-  console.log(req.body);
   try {
     const { email, username, phone, password, isAdmin } = req.body; // derefernce the array
     const userExist = await User.findOne({ email });

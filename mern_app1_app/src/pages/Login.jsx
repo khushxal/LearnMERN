@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import "../css/Login.css";
 import { Link, useLocation } from "react-router-dom";
 import { UseAuth } from "../auth/auth";
 import axios from "axios";
+import { toast } from "react-toastify";
+import "../css/Login.css";
 function Login() {
   const URI = "http://localhost:3001/api/auth/login";
 
@@ -26,9 +27,13 @@ function Login() {
     e.preventDefault();
     try {
       const res = await axios.post(URI, data);
-      if (res.data.token) storeToken(res.data.token);
-      console.log(res.data.token);
-      alert(res.data.msg);
+      if (res.data.token) {
+        storeToken(res.data.token);
+        toast.success(res.data.msg);
+        // redirect to home screen page
+      } else {
+        toast.error(res.data.msg);
+      }
       setData({
         email: "",
         password: "",

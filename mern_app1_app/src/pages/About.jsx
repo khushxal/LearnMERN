@@ -66,8 +66,11 @@ function About() {
               Contact Me
               <div className="row">
                 <div className="col fs-5">
-                  <p>📥 : vkkhushal18@gmail.com</p>
-                  <p>📲 : 8602352536</p>
+                  <span>📥 : vkkhushal18@gmail.com</span>
+                  <br />
+                  <span>📲 : 8602352536</span>
+                </div>
+                <div className="mt-3">
                   <button className="btn">Hire me</button>
                 </div>
               </div>

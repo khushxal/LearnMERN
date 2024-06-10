@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { UseAuth } from "../auth/auth.jsx";
 import axios from "axios";
+import { toast } from "react-toastify";
 function Register() {
   const URI = "http://localhost:3001/api/auth/register";
 
@@ -27,15 +28,17 @@ function Register() {
     e.preventDefault();
     try {
       const res = await axios.post(URI, userdata);
-      if (res.data.token) storeToken(res.data.token);
-      alert(res.data.msg);
       if (res.status == 201) {
+        storeToken(res.data.token);
+        toast.success(res.data.msg);
         navigate("/login", {
           state: {
             email: userdata.email,
             password: userdata.password,
           },
         });
+      } else {
+        toast.error(res.data.msg);
       }
       setUserData({
         email: "",
