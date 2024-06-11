@@ -10,6 +10,10 @@ import Footer from "./components/Footer";
 import Logout from "./pages/Logout";
 import Books from "./pages/Books";
 import Admin from "./pages/Admin";
+import Profile from "./layouts/Profile-layout";
+import Users from "./layouts/Users-layout";
+import Queries from "./layouts/Queries-layout";
+import Book from "./layouts/Queries-layout";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 function App() {
   return (
@@ -24,7 +28,12 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/logout" element={<Logout />} />
           <Route path="/books" element={<Books />} />
-          <Route path="/admin" element={<Admin />} />
+          <Route path="/admin" element={<Admin />}>
+            <Route path="" element={<Profile />} />
+            <Route path="users" element={<Users />} />
+            <Route path="queries" element={<Queries />} />
+            <Route path="books" element={<Book />} />
+          </Route>
           <Route path="/*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
