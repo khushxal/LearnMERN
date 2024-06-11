@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import img from "../image/images.jpeg";
+
 import { UseAuth } from "../auth/auth";
 import { useNavigate } from "react-router-dom";
 
@@ -42,13 +44,8 @@ function Books() {
           <div className="grid-container">
             {booksList.map((book, index) => (
               <div className="col card" key={index}>
-                <div className="card-img text-center">
-                  <img
-                    src={book.imgUrl}
-                    alt="Cover page"
-                    height={100}
-                    width={100}
-                  />
+                <div className="card-img mt-2 text-center">
+                  <img src={img} alt="Cover page" height={200} width={200} />
                 </div>
                 <div className="card-body">
                   <div className="fs-4 fw-bold mb-4"> {book.title}</div>

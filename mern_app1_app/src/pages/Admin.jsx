@@ -6,10 +6,10 @@ function Admin() {
     <div className="container">
       <div className="row">
         <div className="col-3 card me-1">
-          <div className="mt-2 fs-3 mx-2">Radhe Radhe Admin</div>
+          <div className="mt-4 fs-3 mx-2">Radhe Radhe Admin</div>
           <hr />
           <div>
-            <ul className="admin-list fs-5 text-uppercase ">
+            <ul className="fs-5 text-uppercase fw-bolder bg-white rounded-3 ">
               <li className="nav-item">
                 <Link to={""} className="nav-link">
                   👤 Admin Profile
@@ -35,8 +35,8 @@ function Admin() {
           <hr />
         </div>
         <div className="col-8 card">
-          <div className="m-5">
-            <Outlet></Outlet>
+          <div>
+            <Outlet />
           </div>
         </div>
       </div>
