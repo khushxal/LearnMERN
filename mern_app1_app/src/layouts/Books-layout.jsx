@@ -21,7 +21,7 @@ function Books() {
 
   useEffect(() => {
     getAllBooks();
-  }, [bookList]);
+  }, []);
 
   return (
     <div className="container">
