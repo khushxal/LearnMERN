@@ -1,13 +1,21 @@
 import axios from "axios";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 function Users() {
   const URL = "http://localhost:3001/api/admin";
 
+  const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(null);
+
   async function getAllUsers() {
     try {
-      const user_data = await axios.get(URL + "/users");
-      console.log(user_data);
+      const response = await axios.get(URL + "/users");
+      if (response.data.users.length === 0) {
+        setLoading("No User Found");
+      } else {
+        setUsers(await response.data.users);
+        setLoading(false);
+      }
     } catch (error) {
       console.log(error);
     }
@@ -17,7 +25,28 @@ function Users() {
     getAllUsers();
   }, []);
 
-  return <div>This is users layout</div>;
+  return (
+    <div className="container">
+      <div className="row">
+        {loading ? (
+          <div className="text-center fs-1 text-dark fw-bold">{loading}</div>
+        ) : (
+          <div className="grid-container">
+            {users.map((user, index) => (
+              <div className="col card w-auto" key={index}>
+                <div className="card-body">
+                  <div className="fs-5 fw-bold">{user.email}</div>
+                  <div className="fs-5 fw-bold">{user.username}</div>
+                  <div className="fs-6 fw-bold ">{user.phone}</div>
+                  <button className="btn mt-2">Delete</button>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+    </div>
+  );
 }
 
 export default Users;
