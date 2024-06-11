@@ -8,21 +8,19 @@ import "react-toastify/dist/ReactToastify.css";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <AuthProvider>
-    <React.StrictMode>
-      <App />
-      <ToastContainer
-        bodyClassName="toast-body"
-        position="top-right"
-        autoClose={4000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        transition:Bounce
-      />
-    </React.StrictMode>
+    <App />
+    <ToastContainer
+      bodyClassName="toast-body"
+      position="top-right"
+      autoClose={4000}
+      hideProgressBar={false}
+      newestOnTop={false}
+      closeOnClick
+      rtl={false}
+      pauseOnFocusLoss
+      draggable
+      pauseOnHover
+      transition:Bounce
+    />
   </AuthProvider>
 );
