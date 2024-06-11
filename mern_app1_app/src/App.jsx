@@ -13,7 +13,7 @@ import Admin from "./pages/Admin";
 import Profile from "./layouts/Profile-layout";
 import Users from "./layouts/Users-layout";
 import Queries from "./layouts/Queries-layout";
-import Book from "./layouts/Queries-layout";
+import Book from "./layouts/Books-layout";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 function App() {
   return (

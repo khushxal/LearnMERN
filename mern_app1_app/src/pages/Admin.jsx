@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import "../css/Admin.css";
 function Admin() {
   return (
@@ -34,7 +34,11 @@ function Admin() {
           </div>
           <hr />
         </div>
-        <div className="col-8 card"></div>
+        <div className="col-8 card">
+          <div className="m-5">
+            <Outlet></Outlet>
+          </div>
+        </div>
       </div>
     </div>
   );
