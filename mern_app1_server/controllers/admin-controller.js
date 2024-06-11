@@ -15,6 +15,8 @@ async function adminProfile(req, res, next) {
 async function getAllUsers(req, res, next) {
   try {
     const users = await User.find({}, { password: 0 });
+    // if (!users || users.length === 0)
+    // res.status(404).json({ msg: "No User Found" });
     res.status(200).json({ users: users });
   } catch (error) {
     next(error);
@@ -24,6 +26,8 @@ async function getAllUsers(req, res, next) {
 async function getAllQueries(req, res, next) {
   try {
     const queries = await Contact.find({});
+    // if (!queries || queries.length === 0)
+    // res.status(404).json({ msg: "No Queries Found" });
     res.status(200).json({ queries: queries });
   } catch (error) {
     next(error);
@@ -33,6 +37,8 @@ async function getAllQueries(req, res, next) {
 async function getAllBooks(req, res, next) {
   try {
     const books = await Book.find({});
+    // if (!books || books.length === 0)
+    // res.status(404).json({ msg: "No Books Found" });
     res.status(200).json({ books: books });
   } catch (error) {
     next(error);

@@ -35,7 +35,9 @@ export function AuthProvider({ children }) {
   }
 
   useEffect(function () {
-    isAuthorizedUser();
+    if (!!token) {
+      isAuthorizedUser();
+    }
   }, []);
 
   return (

@@ -29,7 +29,7 @@ function Books() {
 
   return (
     <div className="container">
-      <div className="row mb-3 fs-4">
+      <div className="row mb-3 fs-4 fw-bold">
         {loading ? (
           <div className="text-center fs-1 text-dark">{loading}</div>
         ) : (

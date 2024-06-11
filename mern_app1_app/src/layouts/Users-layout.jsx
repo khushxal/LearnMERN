@@ -8,6 +8,7 @@ function Users() {
   const [loading, setLoading] = useState(null);
 
   async function getAllUsers() {
+    setLoading("Loading....");
     try {
       const response = await axios.get(URL + "/users");
       if (response.data.users.length === 0) {
@@ -27,7 +28,7 @@ function Users() {
 
   return (
     <div className="container">
-      <div className="row">
+      <div className="row mb-3 fs-4 fw-bold">
         {loading ? (
           <div className="text-center fs-1 text-dark fw-bold">{loading}</div>
         ) : (
