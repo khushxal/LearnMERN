@@ -1,12 +1,16 @@
 import axios from "axios";
 import { useEffect } from "react";
-
+import { UseAuth } from "../auth/auth";
 function Profile() {
   const URL = "http://localhost:3001/api/admin";
 
+  const { token } = UseAuth();
+
   async function getAdminProfile() {
     try {
-      const admin_data = await axios.get(URL + "/profile");
+      const admin_data = await axios.get(URL + "/profile", {
+        headers: { Authorization: `Bearer ${token}` },
+      });
       console.log(admin_data);
     } catch (error) {
       console.log(error);

@@ -92,7 +92,7 @@ async function About(req, res, next) {
 function UserData(req, res, next) {
   try {
     const userData = req.user;
-    res.status(200).json({ userData });
+    res.status(200).json({ userData, userToken });
   } catch (error) {
     next(error);
   }

@@ -25,7 +25,8 @@ export function AuthProvider({ children }) {
           Authorization: `Bearer ${token}`,
         },
       });
-      // console.log("This is Checking is authorized user res", res);
+
+      console.log("This is Checking is authorized user res", res);
       if (res) {
         setUserData(await res.data.userData);
       }
@@ -35,14 +36,14 @@ export function AuthProvider({ children }) {
   }
 
   useEffect(function () {
-    if (!!token) {
+    if (token) {
       isAuthorizedUser();
     }
   }, []);
 
   return (
     <AuthContext.Provider
-      value={{ storeToken, deleteToken, isLoggedIn, userData }}
+      value={{ storeToken, deleteToken, isLoggedIn, userData, token }}
     >
       {children}
     </AuthContext.Provider>
