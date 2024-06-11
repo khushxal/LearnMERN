@@ -12,11 +12,14 @@ function Books() {
     setLoading("Loading....");
     try {
       const response = await axios.get(URL);
-      setBookList(response.data.books);
-      setLoading(false);
+      if (response.data.books.length === 0) {
+        setLoading("No Books Found");
+      } else {
+        setBookList(response.data.books);
+        setLoading(false);
+      }
     } catch (error) {
       console.log(error);
-      setLoading(false);
     }
   }
 

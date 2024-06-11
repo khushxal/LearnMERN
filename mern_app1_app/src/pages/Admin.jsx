@@ -9,7 +9,7 @@ function Admin() {
           <div className="mt-4 fs-3 mx-2">Radhe Radhe Admin</div>
           <hr />
           <div>
-            <ul className="fs-5 text-uppercase fw-bolder bg-white rounded-3 ">
+            <ul className="fs-5 text-uppercase fw-bolder rounded-3 bg-white ">
               <li className="nav-item">
                 <Link to={""} className="nav-link">
                   👤 Admin Profile
