@@ -11,7 +11,7 @@ function Books() {
     setLoading("Loading....");
     try {
       const response = await axios.get(URL);
-      setBookList(await response.data.books);
+      setBookList(response.data.books);
       setLoading(false);
     } catch (error) {
       console.log(error);
