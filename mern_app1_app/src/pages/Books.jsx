@@ -8,8 +8,8 @@ function Books() {
   const { isLoggedIn } = UseAuth();
   const URL = "http://localhost:3001/api/data/books";
 
-  const [booksList, setBooksList] = useState([]);
   const [loading, setLoading] = useState(null);
+  const [booksList, setBooksList] = useState([]);
 
   async function getBookList() {
     setLoading("Loading....");
@@ -17,6 +17,7 @@ function Books() {
       const response = await axios.get(URL);
       console.log("Response data:", response.data); // Log the response data
       setBooksList(response.data.books);
+      console.log("This is Booklist : ", booksList);
       setLoading(false);
     } catch (error) {
       console.error("Error fetching books:", error);
