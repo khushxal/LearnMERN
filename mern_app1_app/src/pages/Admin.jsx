@@ -5,9 +5,8 @@ import { UseAuth } from "../auth/auth";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 function Admin() {
-  const { isLoggedIn } = UseAuth();
+  const { isLoggedIn, userData } = UseAuth();
   const navigate = useNavigate();
-
   useEffect(() => {
     if (!isLoggedIn) {
       toast.error("Access denied. User is not an admin.");
@@ -48,9 +47,7 @@ function Admin() {
           <hr />
         </div>
         <div className="col-8 card">
-          <div>
-            <Outlet />
-          </div>
+          <Outlet />
         </div>
       </div>
     </div>

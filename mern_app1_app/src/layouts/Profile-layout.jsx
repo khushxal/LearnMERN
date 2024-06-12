@@ -23,14 +23,8 @@ function Profile() {
   }, []);
 
   return (
-    <div className="container">
-      <div className="row">
-        <div className="col">
-          {admin.email}
-          <br />
-          {admin.phone}
-        </div>
-      </div>
+    <div className="container text-center fs-2">
+      <div>This is Admin Profile page</div>
     </div>
   );
 }

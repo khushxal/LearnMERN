@@ -43,6 +43,15 @@ function Queries() {
                   <div className="fs-6">{query.phone}</div>
                   <div className="fs-6 fw-bold ">{query.query}</div>
                 </div>
+                <hr />
+                <div className="row text-center mb-2">
+                  <div className="col">
+                    <button className="btn">Respond</button>
+                  </div>
+                  <div className="col">
+                    <button className="btn">Delete</button>
+                  </div>
+                </div>
               </div>
             ))}
           </div>

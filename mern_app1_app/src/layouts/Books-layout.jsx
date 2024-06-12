@@ -49,6 +49,15 @@ function Books() {
                   </div>
                   <div className="fs-6 ">Published : {book.year}</div>
                 </div>
+                <hr />
+                <div className="row text-center mb-3">
+                  <div className="col">
+                    <button className="btn w-50">Edit</button>
+                  </div>
+                  <div className="col">
+                    <button className="btn w-50">Delete</button>
+                  </div>
+                </div>
               </div>
             ))}
           </div>
