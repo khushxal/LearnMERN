@@ -25,8 +25,6 @@ export function AuthProvider({ children }) {
           Authorization: `Bearer ${token}`,
         },
       });
-
-      console.log("This is Checking is authorized user res", res);
       if (res) {
         setUserData(await res.data.userData);
       }

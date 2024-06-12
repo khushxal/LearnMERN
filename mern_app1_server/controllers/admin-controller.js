@@ -4,9 +4,7 @@ import User from "../models/user-model.js";
 
 async function adminProfile(req, res, next) {
   try {
-    const admin = req.user;
-    const admin_data = await User.find({ email: admin.email });
-    console.log(admin_data);
+    res.status(200).json({ admin: req.user });
   } catch (error) {
     next(error);
   }

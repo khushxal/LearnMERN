@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import img from "../image/images.jpeg";
+import { toast } from "react-toastify";
 
 import { UseAuth } from "../auth/auth";
 import { useNavigate } from "react-router-dom";
 
 function Books() {
   const navigate = useNavigate();
-  const { token } = UseAuth();
+  const { token, isLoggedIn } = UseAuth();
   const URL = "http://localhost:3001/api/data/books";
 
   const [loading, setLoading] = useState(null);
@@ -30,9 +31,10 @@ function Books() {
   }
 
   useEffect(() => {
-    if (token) {
+    if (isLoggedIn) {
       getBookList();
     } else {
+      toast.error("Login required");
       navigate("/login");
     }
   }, []);

@@ -58,7 +58,7 @@ function Login() {
         </div>
         <div className="col-md-10 mx-auto col-lg-5">
           <form
-            autoComplete="off"
+            autoComplete="on"
             method="post"
             onSubmit={handleSubmit}
             className="p-4 p-md-5 border rounded-3 bg-light fw-light"

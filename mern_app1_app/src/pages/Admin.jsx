@@ -5,13 +5,13 @@ import { UseAuth } from "../auth/auth";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 function Admin() {
-  const { token } = UseAuth();
+  const { isLoggedIn } = UseAuth();
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!token) {
-      toast.error("Invalid Access");
-      navigate("/login");
+    if (!isLoggedIn) {
+      toast.error("Access denied. User is not an admin.");
+      navigate("/books");
     }
   }, []);
 

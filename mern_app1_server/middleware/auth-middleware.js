@@ -5,9 +5,7 @@ async function AuthMiddleware(req, res, next) {
   try {
     const token = req.header("Authorization").replace("Bearer ", "");
     if (!token) {
-      res
-        .status(401)
-        .json({ msg: "Unauthoraized access due to token is not present" });
+      res.status(401).json({ msg: "Unauthoraized access" });
     }
     const isVerified = jwt.verify(token, process.env.PRIVATE_KEY);
     const userData = await User.findOne({ email: isVerified.email }).select({
@@ -15,10 +13,9 @@ async function AuthMiddleware(req, res, next) {
     });
     req.user = userData;
     req.token = token;
-    req.userId = userData._id;
     next();
   } catch (error) {
-    res.status(401).json({ msg: "Unauthorized access due to error" });
+    res.status(401).json({ msg: "Unauthorized access" });
   }
 }
 

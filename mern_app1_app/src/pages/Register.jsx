@@ -31,12 +31,7 @@ function Register() {
       if (res.status == 201) {
         storeToken(res.data.token);
         toast.success(res.data.msg);
-        navigate("/login", {
-          state: {
-            email: userdata.email,
-            password: userdata.password,
-          },
-        });
+        navigate("/books");
       } else {
         toast.error(res.data.msg);
       }

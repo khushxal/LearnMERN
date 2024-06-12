@@ -1,18 +1,18 @@
 import axios from "axios";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { UseAuth } from "../auth/auth";
-import { toast } from "react-toastify";
 function Profile() {
   const URL = "http://localhost:3001/api/admin";
 
   const { token } = UseAuth();
+  const [admin, setAdmin] = useState({});
 
   async function getAdminProfile() {
     try {
-      const admin_data = await axios.get(URL + "/profile", {
+      const res = await axios.get(URL + "/profile", {
         headers: { Authorization: `Bearer ${token}` },
       });
-      console.log("This is admin Data", admin_data);
+      setAdmin(await res.data.admin);
     } catch (error) {
       console.log(error.response.status);
     }
@@ -22,7 +22,17 @@ function Profile() {
     getAdminProfile();
   }, []);
 
-  return <div>This is profile layout</div>;
+  return (
+    <div className="container">
+      <div className="row">
+        <div className="col">
+          {admin.email}
+          <br />
+          {admin.phone}
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export default Profile;
