@@ -74,7 +74,7 @@ async function Login(req, res, next) {
 function UserData(req, res, next) {
   try {
     const userData = req.user;
-    res.status(200).json({ userData, userToken });
+    res.status(200).json({ userData: userData });
   } catch (error) {
     next(error);
   }

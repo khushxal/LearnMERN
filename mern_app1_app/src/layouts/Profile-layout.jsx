@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect } from "react";
 import { UseAuth } from "../auth/auth";
+import { toast } from "react-toastify";
 function Profile() {
   const URL = "http://localhost:3001/api/admin";
 
@@ -11,9 +12,9 @@ function Profile() {
       const admin_data = await axios.get(URL + "/profile", {
         headers: { Authorization: `Bearer ${token}` },
       });
-      console.log(admin_data);
+      console.log("This is admin Data", admin_data);
     } catch (error) {
-      console.log(error);
+      console.log(error.response.status);
     }
   }
 

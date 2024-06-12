@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { UseAuth } from "../auth/auth";
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -8,6 +8,7 @@ function Login() {
   const URI = "http://localhost:3001/api/auth/login";
 
   const location = useLocation();
+  const navigate = useNavigate();
 
   const { storeToken } = UseAuth();
 
@@ -30,7 +31,7 @@ function Login() {
       if (res.data.token) {
         storeToken(res.data.token);
         toast.success(res.data.msg);
-        // redirect to home screen page
+        navigate("/books");
       } else {
         toast.error(res.data.msg);
       }

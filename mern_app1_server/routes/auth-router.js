@@ -9,7 +9,7 @@ const router = express.Router();
 
 // -- Following routes are routed by router -- //
 
-router.route("/").get(Controller.Home);
+// api/auth routes
 
 router.route("/register").post(validate(signupSchema), Controller.Register); // using ZOD validation
 

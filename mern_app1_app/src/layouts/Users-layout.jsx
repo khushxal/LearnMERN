@@ -1,16 +1,21 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-
+import { UseAuth } from "../auth/auth";
+import { useNavigate } from "react-router-dom";
 function Users() {
   const URL = "http://localhost:3001/api/admin";
 
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(null);
+  const { token } = UseAuth();
+  const navigate = useNavigate();
 
   async function getAllUsers() {
     setLoading("Loading....");
     try {
-      const response = await axios.get(URL + "/users");
+      const response = await axios.get(URL + "/users", {
+        headers: { Authorization: `Bearer ${token}` },
+      });
       if (response.data.users.length === 0) {
         setLoading("No User Found");
       } else {
@@ -18,7 +23,7 @@ function Users() {
         setLoading(false);
       }
     } catch (error) {
-      console.log(error);
+      console.log(error.response.status);
     }
   }
 

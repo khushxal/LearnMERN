@@ -1,16 +1,20 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { UseAuth } from "../auth/auth";
 
 function Queries() {
   const URL = "http://localhost:3001/api/admin";
 
   const [queries, setQueries] = useState([]);
   const [loading, setLoading] = useState(null);
+  const { token } = UseAuth();
 
   async function getAllQueries() {
     setLoading("Loading....");
     try {
-      const response = await axios.get(URL + "/queries");
+      const response = await axios.get(URL + "/queries", {
+        headers: { Authorization: `Bearer ${token}` },
+      });
       if (response.data.queries.length === 0) {
         setLoading("No Queries Found");
       } else {
@@ -18,7 +22,7 @@ function Queries() {
         setLoading(false);
       }
     } catch (error) {
-      console.log(error);
+      console.log(error.response.status);
     }
   }
 
