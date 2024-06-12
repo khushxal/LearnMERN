@@ -1,17 +1,19 @@
 import axios from "axios";
 import img from "../image/images.jpeg";
+import { UseAuth } from "../auth/auth";
 import { useEffect, useState } from "react";
 
 function Books() {
   const URL = "http://localhost:3001/api/admin/books";
-
   const [bookList, setBookList] = useState([]);
   const [loading, setLoading] = useState(null);
-
+  const { token } = UseAuth();
   async function getAllBooks() {
     setLoading("Loading....");
     try {
-      const response = await axios.get(URL);
+      const response = await axios.get(URL, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
       if (response.data.books.length === 0) {
         setLoading("No Books Found");
       } else {
