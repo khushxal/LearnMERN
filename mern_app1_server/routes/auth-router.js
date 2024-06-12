@@ -11,10 +11,7 @@ const router = express.Router();
 
 router.route("/").get(Controller.Home);
 
-router
-  .route("/register")
-  .get(Controller.Register)
-  .post(validate(signupSchema), Controller.Register); // using ZOD validation
+router.route("/register").post(validate(signupSchema), Controller.Register); // using ZOD validation
 
 router.route("/login").post(validate(signinSchema), Controller.Login); // using ZOD validation
 

@@ -1,14 +1,6 @@
 // -- Following function are the controllers that are responsible for the functionallity part of the route  -- //
 import User from "../models/user-model.js";
-import ContactForm from "../models/contact-model.js";
 // import bycrypt from "bcrypt";
-async function Home(req, res, next) {
-  try {
-    res.send("<h1>Home Landing Page</h1>");
-  } catch (error) {
-    next(error);
-  }
-}
 
 // Registration process is completed added user (CREATE OPERATION)
 async function Register(req, res, next) {
@@ -78,16 +70,6 @@ async function Login(req, res, next) {
   }
 }
 
-// This is about function
-async function About(req, res, next) {
-  try {
-    res.send("<h1>This is about page</h1>");
-  } catch (error) {
-    console.log(error);
-    next(error);
-  }
-}
-
 // This is User
 function UserData(req, res, next) {
   try {
@@ -99,4 +81,4 @@ function UserData(req, res, next) {
 }
 
 // Exporting all the function
-export default { Home, Register, About, Login, UserData };
+export default { Register, Login, UserData };
