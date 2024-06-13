@@ -50,7 +50,7 @@ function Users() {
         ) : (
           <div className="grid-container">
             {users.map((user, index) => (
-              <div className="col card w-auto border-light">
+              <div className="col card w-auto border-light" key={index}>
                 <div className="card-body">
                   <div className="fs-5 fw-bold">{user.email}</div>
                   <div className="fs-5 fw-bold">{user.username}</div>
