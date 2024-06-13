@@ -20,4 +20,8 @@ router
   .route("/profile")
   .get(AuthMiddleware, AdminMiddleware, controller.adminProfile);
 
+router
+  .route("/users/delete/:id")
+  .delete(AuthMiddleware, AdminMiddleware, controller.deleteUserByID);
+
 export default router;

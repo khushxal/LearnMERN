@@ -29,6 +29,16 @@ async function getAllUsers(req, res, next) {
   }
 }
 
+async function deleteUserByID(req, res, next) {
+  try {
+    const id = req.params.id;
+    const deleteUser = await User.deleteOne({ _id: id });
+    res.status(200).json({ deleteUser: deleteUser });
+  } catch (error) {
+    next(error);
+  }
+}
+
 async function getAllQueries(req, res, next) {
   try {
     const queries = await Contact.find({});
@@ -57,4 +67,5 @@ export default {
   getAllQueries,
   getAllBooks,
   adminPage,
+  deleteUserByID,
 };
