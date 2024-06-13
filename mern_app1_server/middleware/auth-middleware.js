@@ -3,10 +3,11 @@ import User from "../models/user-model.js";
 
 async function AuthMiddleware(req, res, next) {
   try {
-    const token = req.header("Authorization").replace("Bearer ", "");
-    if (!token) {
+    const bearerToken = req.header("Authorization");
+    if (!bearerToken) {
       res.status(401).json({ msg: "Unauthoraized access" });
     }
+    const token = bearerToken.replace("Bearer ", "");
     const isVerified = jwt.verify(token, process.env.PRIVATE_KEY);
     const userData = await User.findOne({ email: isVerified.email }).select({
       password: 0,

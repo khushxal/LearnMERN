@@ -31,7 +31,7 @@ function Login() {
       if (res.data.token) {
         storeToken(res.data.token);
         toast.success(res.data.msg);
-        navigate("/books");
+        checkIsAdmin(res);
       } else {
         toast.error(res.data.msg);
       }
@@ -41,6 +41,14 @@ function Login() {
       });
     } catch (error) {
       console.log(error);
+    }
+  }
+
+  async function checkIsAdmin(res) {
+    if (await res.data.isAdmin) {
+      navigate("/admin");
+    } else {
+      navigate("/books");
     }
   }
 

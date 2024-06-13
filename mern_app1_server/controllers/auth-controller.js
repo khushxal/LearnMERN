@@ -38,24 +38,15 @@ async function Login(req, res, next) {
   try {
     const { email, password } = req.body; // Holding data from user
     const userExist = await User.findOne({ email }); // Check for user email in database
-    if (userExist) {
-      if (await userExist.comparePassword(password)) {
-        // using instance method (user-defined) created by userSchema
-        res.status(200).json({
-          // Returing the data if authorized
-          msg: "Log-in successfull",
-          token: await userExist.generateToken(),
-          userId: userExist._id,
-        });
-      } else {
-        // res.sendStatus(401); //  return unauthorized
-        const error = {
-          status: 200,
-          msg: "Invalid Credential",
-          extraDetails: "Unauthorized",
-        };
-        next(error);
-      }
+    if (userExist && (await userExist.comparePassword(password))) {
+      // using instance method (user-defined) created by userSchema
+      res.status(200).json({
+        // Returing the data if authorized
+        msg: "Log-in successfull",
+        token: await userExist.generateToken(),
+        userId: userExist._id,
+        isAdmin: userExist.isAdmin,
+      });
     } else {
       const error = {
         status: 200,

@@ -5,6 +5,8 @@ import AdminMiddleware from "../middleware/admin-middleware.js";
 
 const router = express.Router();
 
+router.route("/").get(AuthMiddleware, AdminMiddleware, controller.adminPage);
+
 router
   .route("/users")
   .get(AuthMiddleware, AdminMiddleware, controller.getAllUsers);

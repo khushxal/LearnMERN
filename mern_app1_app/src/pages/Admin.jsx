@@ -4,14 +4,34 @@ import "../css/Admin.css";
 import { UseAuth } from "../auth/auth";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import axios from "axios";
+
 function Admin() {
-  const { isLoggedIn, userData } = UseAuth();
+  const { isLoggedIn, token } = UseAuth();
   const navigate = useNavigate();
-  useEffect(() => {
-    if (!isLoggedIn) {
-      toast.error("Access denied. User is not an admin.");
-      navigate("/books");
+
+  const URL = "http://localhost:3001/api/admin/";
+
+  async function getIsAdmin() {
+    let response;
+    try {
+      response = await axios.get(URL, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      return await response.data.user_role;
+    } catch (error) {
+      if (isLoggedIn) {
+        toast.error("Access denied. User is not an admin.");
+        navigate("/books");
+      } else {
+        toast.error("Login Required");
+        navigate("/login");
+      }
     }
+  }
+
+  useEffect(() => {
+    getIsAdmin();
   }, []);
 
   return (

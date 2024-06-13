@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import img from "../image/images.jpeg";
 import { toast } from "react-toastify";
-
 import { UseAuth } from "../auth/auth";
 import { useNavigate } from "react-router-dom";
 
@@ -25,18 +24,14 @@ function Books() {
       // console.log("This is Booklist : ", booksList);
       setLoading(false);
     } catch (error) {
-      console.error("Error fetching books:", error);
+      toast.error("Login Required");
+      navigate("/login");
       setLoading(false);
     }
   }
 
   useEffect(() => {
-    if (isLoggedIn) {
-      getBookList();
-    } else {
-      toast.error("Login required");
-      navigate("/login");
-    }
+    getBookList();
   }, []);
 
   return (

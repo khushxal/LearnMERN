@@ -4,10 +4,10 @@ export const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
   const [token, setToken] = useState(localStorage.getItem("token"));
-  const [user_Data, setUserData] = useState({});
-  const [adminRole, setAdminRole] = useState(false);
+  const [user_Data, setUserData] = useState();
   const isLoggedIn = !!token;
 
+  // when login or sign up token stored
   function storeToken(Token) {
     localStorage.setItem("token", Token);
     setToken(Token);
@@ -15,7 +15,6 @@ export function AuthProvider({ children }) {
 
   function deleteToken() {
     setToken("");
-    setAdminRole(false);
     localStorage.removeItem("token");
   }
 
@@ -26,7 +25,7 @@ export function AuthProvider({ children }) {
           Authorization: `Bearer ${token}`,
         },
       });
-      if (res.data.userData) {
+      if (res) {
         setUserData(await res.data.userData);
       }
     } catch (error) {
@@ -42,14 +41,7 @@ export function AuthProvider({ children }) {
 
   return (
     <AuthContext.Provider
-      value={{
-        storeToken,
-        deleteToken,
-        isLoggedIn,
-        user_Data,
-        token,
-        adminRole,
-      }}
+      value={{ storeToken, deleteToken, isLoggedIn, token }}
     >
       {children}
     </AuthContext.Provider>
