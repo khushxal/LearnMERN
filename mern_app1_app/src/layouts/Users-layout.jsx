@@ -1,12 +1,14 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { UseAuth } from "../auth/auth";
+import { useNavigate } from "react-router-dom";
 function Users() {
   const URL = "http://localhost:3001/api/admin";
 
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(null);
   const { token } = UseAuth();
+  const navigate = useNavigate();
 
   async function getAllUsers() {
     setLoading("Loading....");
@@ -38,6 +40,14 @@ function Users() {
     }
   }
 
+  async function updateUser(id) {
+    try {
+      navigate("/admin/edit", { state: { userId: id } });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   useEffect(function () {
     getAllUsers();
   }, []);
@@ -59,7 +69,12 @@ function Users() {
                     <div className="row text-center">
                       <hr />
                       <div className="col">
-                        <button className="btn w-50">Edit</button>
+                        <button
+                          className="btn w-50"
+                          onClick={() => updateUser(user._id)}
+                        >
+                          Edit
+                        </button>
                       </div>
                       <div className="col">
                         <button

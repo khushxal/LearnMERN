@@ -29,6 +29,18 @@ async function getAllUsers(req, res, next) {
   }
 }
 
+async function getUserByID(req, res) {
+  const id = req.params.id;
+  const userExists = await User.findOne({ _id: id }, { password: 0 });
+  if (userExists) {
+    return res.status(200).json({ userDetails: userExists });
+  }
+  try {
+  } catch (error) {
+    next(error);
+  }
+}
+
 async function deleteUserByID(req, res, next) {
   try {
     const id = req.params.id;
@@ -61,6 +73,25 @@ async function getAllBooks(req, res, next) {
   }
 }
 
+async function editUser(req, res) {
+  try {
+    const id = req.params.id;
+    const { email, username, phone } = req.body;
+    const updateduser = await User.findByIdAndUpdate(
+      id,
+      { email, username, phone },
+      { new: true, runValidator: true }
+    );
+    if (updateduser) {
+      return res.status(200).json({
+        msg: "User Updated Successfully",
+      });
+    }
+  } catch (error) {
+    next(error);
+  }
+}
+
 export default {
   adminProfile,
   getAllUsers,
@@ -68,4 +99,6 @@ export default {
   getAllBooks,
   adminPage,
   deleteUserByID,
+  getUserByID,
+  editUser,
 };

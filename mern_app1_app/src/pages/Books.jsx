@@ -26,7 +26,7 @@ function Books() {
       setLoading(false);
     } catch (error) {
       toast.error("Login Required");
-      navigate("/login");
+      navigate("/logout");
       setLoading(false);
     }
   }

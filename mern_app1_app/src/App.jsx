@@ -15,6 +15,7 @@ import Users from "./layouts/Users-layout";
 import Queries from "./layouts/Queries-layout";
 import Book from "./layouts/Books-layout";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Edituser from "./layouts/Edit-layout";
 function App() {
   return (
     <>
@@ -31,6 +32,7 @@ function App() {
           <Route path="/admin" element={<Admin />}>
             <Route path="" element={<Profile />} />
             <Route path="users" element={<Users />} />
+            <Route path="edit" element={<Edituser />} />
             <Route path="queries" element={<Queries />} />
             <Route path="books" element={<Book />} />
           </Route>

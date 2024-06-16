@@ -21,6 +21,14 @@ router
   .get(AuthMiddleware, AdminMiddleware, controller.adminProfile);
 
 router
+  .route("/user/:id")
+  .get(AuthMiddleware, AdminMiddleware, controller.getUserByID);
+
+router
+  .route("/user/:id")
+  .put(AuthMiddleware, AdminMiddleware, controller.editUser);
+
+router
   .route("/users/delete/:id")
   .delete(AuthMiddleware, AdminMiddleware, controller.deleteUserByID);
 

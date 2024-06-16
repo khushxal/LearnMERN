@@ -24,8 +24,8 @@ function Admin() {
         toast.error("Access denied. User is not an admin.");
         navigate("/books");
       } else {
-        toast.error("Login Required");
-        navigate("/login");
+        toast.error("Login Required by admin page ");
+        navigate("/logout");
       }
     }
   }
@@ -67,7 +67,7 @@ function Admin() {
           <hr />
         </div>
         <div className="col-8 card">
-          <Outlet />
+          <Outlet></Outlet>
         </div>
       </div>
     </div>
