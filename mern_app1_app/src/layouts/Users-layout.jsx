@@ -23,7 +23,7 @@ function Users() {
         setLoading(false);
       }
     } catch (error) {
-      console.log(error.response.status);
+      // console.log(error.response.status);
     }
   }
 

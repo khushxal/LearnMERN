@@ -27,7 +27,7 @@ function Edituser() {
         phone: await res.data.userDetails.phone,
       });
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   }
 
@@ -36,7 +36,7 @@ function Edituser() {
       getUserById();
     } else {
       toast.error("Access Denide. User is not a valid admin.");
-      navigate("/login");
+      navigate("/logout");
     }
   }, []);
 

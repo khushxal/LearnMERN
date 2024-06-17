@@ -61,7 +61,7 @@ function About() {
                 />
               </li>
             </p>
-            <p className="mt-2 ms-2 fs-4">
+            <div className="mt-2 ms-2 fs-4">
               Contact Me
               <div className="row">
                 <div className="col fs-5">
@@ -77,7 +77,7 @@ function About() {
                   <button className="btn">Hire me</button>
                 </div>
               </div>
-            </p>
+            </div>
           </div>
           <div className="col">
             <img

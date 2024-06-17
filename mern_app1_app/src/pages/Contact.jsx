@@ -9,8 +9,6 @@ function Contact() {
 
   const { user } = UseAuth();
 
-  console.log(user);
-
   const [contactdata, setContactData] = useState({
     email: user ? user.email : "",
     phone: user ? user.phone : "",

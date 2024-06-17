@@ -22,7 +22,7 @@ function Queries() {
         setLoading(false);
       }
     } catch (error) {
-      console.log(error.response.status);
+      // console.log(error.response.status);
     }
   }
 
