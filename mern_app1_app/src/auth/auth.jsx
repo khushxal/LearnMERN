@@ -4,7 +4,8 @@ export const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
   const [token, setToken] = useState(localStorage.getItem("token"));
-  const [user_Data, setUserData] = useState();
+  const [user, setUser] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
   const isLoggedIn = !!token;
 
   // when login or sign up token stored
@@ -15,18 +16,21 @@ export function AuthProvider({ children }) {
 
   function deleteToken() {
     setToken("");
+    setUser("");
     localStorage.removeItem("token");
   }
 
   async function isAuthorizedUser() {
     try {
+      setIsLoading(true);
       const res = await axios.get("http://localhost:3001/api/auth/user", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
       if (res) {
-        setUserData(await res.data.userData);
+        setUser(await res.data.userData);
+        setIsLoading(false);
       }
     } catch (error) {
       console.log(error);
@@ -37,11 +41,11 @@ export function AuthProvider({ children }) {
     if (token) {
       isAuthorizedUser();
     }
-  }, []);
+  }, [token]);
 
   return (
     <AuthContext.Provider
-      value={{ storeToken, deleteToken, isLoggedIn, token }}
+      value={{ storeToken, deleteToken, isLoggedIn, token, user, isLoading }}
     >
       {children}
     </AuthContext.Provider>

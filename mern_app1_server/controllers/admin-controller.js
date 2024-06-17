@@ -2,14 +2,6 @@ import Book from "../models/book-model.js";
 import Contact from "../models/contact-model.js";
 import User from "../models/user-model.js";
 
-async function adminPage(req, res, next) {
-  try {
-    res.status(200).json({ user_role: req.user.isAdmin });
-  } catch (error) {
-    next(error);
-  }
-}
-
 async function adminProfile(req, res, next) {
   try {
     res.status(200).json({ admin: req.user });
@@ -97,7 +89,6 @@ export default {
   getAllUsers,
   getAllQueries,
   getAllBooks,
-  adminPage,
   deleteUserByID,
   getUserByID,
   editUser,

@@ -2,38 +2,49 @@ import React, { useEffect } from "react";
 import { Link, Outlet } from "react-router-dom";
 import "../css/Admin.css";
 import { UseAuth } from "../auth/auth";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import axios from "axios";
 
 function Admin() {
-  const { isLoggedIn, token } = UseAuth();
+  const { isLoggedIn, isLoading } = UseAuth();
+  const { user } = UseAuth();
   const navigate = useNavigate();
 
-  const URL = "http://localhost:3001/api/admin/";
+  // const URL = "http://localhost:3001/api/admin/";
+  // async function getIsAdmin() {
+  //   let response;
+  //   try {
+  //     response = await axios.get(URL, {
+  //       headers: { Authorization: `Bearer ${token}` },
+  //     });
+  //     return await response.data.user_role;
+  //   } catch (error) {
+  //     if (isLoggedIn) {
+  //       toast.error("Access denied. User is not an admin.");
+  //       navigate("/books");
+  //     } else {
+  //       toast.error("Login Required by admin page ");
+  //       navigate("/logout");
+  //     }
+  //   }
+  // }
 
-  async function getIsAdmin() {
-    let response;
-    try {
-      response = await axios.get(URL, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      return await response.data.user_role;
-    } catch (error) {
-      if (isLoggedIn) {
-        toast.error("Access denied. User is not an admin.");
-        navigate("/books");
-      } else {
-        toast.error("Login Required by admin page ");
-        navigate("/logout");
-      }
+  // useEffect(() => {}, [user]);
+  // getIsAdmin();
+
+  if (isLoggedIn) {
+    if (isLoading) {
+      return <>Loading...</>;
     }
+    if (!user.isAdmin) {
+      toast.error("Access Denide. User is not valid admin.");
+      return <Navigate to="/books"></Navigate>;
+    } else {
+    }
+  } else {
+    toast.error("Login Required");
+    return <Navigate to="/login"></Navigate>;
   }
-
-  useEffect(() => {
-    getIsAdmin();
-  }, []);
-
   return (
     <div className="container">
       <div className="row">

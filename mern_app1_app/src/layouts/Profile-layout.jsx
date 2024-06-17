@@ -14,7 +14,7 @@ function Profile() {
       });
       setAdmin(await res.data.admin);
     } catch (error) {
-      console.log(error.response.status);
+      // console.log(error.response.status);
     }
   }
 

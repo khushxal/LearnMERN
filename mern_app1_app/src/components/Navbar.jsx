@@ -4,7 +4,7 @@ import { UseAuth } from "../auth/auth";
 import "../css/Navbar.css";
 
 function Navbar() {
-  const { isLoggedIn } = UseAuth();
+  const { isLoggedIn, user } = UseAuth();
   return (
     <div>
       <nav className="d-flex flex-wrap justify-content-center py-2 mb-3 border-bottom">
@@ -39,6 +39,19 @@ function Navbar() {
                   Books
                 </Link>
               </li>
+              {user ? (
+                user.isAdmin ? (
+                  <li className="nav-item">
+                    <Link to="/admin/" className="nav-link">
+                      Admin
+                    </Link>
+                  </li>
+                ) : (
+                  " "
+                )
+              ) : (
+                ""
+              )}
               <li className="nav-item">
                 <Link to="/logout" className="nav-link">
                   Logout

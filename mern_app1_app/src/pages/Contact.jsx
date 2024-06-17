@@ -7,11 +7,13 @@ import "../css/Contact.css";
 function Contact() {
   const URI = "http://localhost:3001/api/contact/contact";
 
-  const { userData } = UseAuth();
+  const { user } = UseAuth();
+
+  console.log(user);
 
   const [contactdata, setContactData] = useState({
-    email: userData ? userData.email : "",
-    phone: userData ? userData.phone : "",
+    email: user ? user.email : "",
+    phone: user ? user.phone : "",
     query: "",
   });
 
@@ -25,8 +27,8 @@ function Contact() {
     try {
       const res = await axios.post(URI, contactdata);
       setContactData({
-        email: userData ? userData.email : "",
-        phone: userData ? userData.phone : "",
+        email: user ? user.email : "",
+        phone: user ? user.phone : "",
         query: "",
       });
       if (res.status == 201) {

@@ -19,7 +19,6 @@ function Books() {
       const response = await axios.get(URL, {
         headers: { Authorization: `Bearer ${token}` },
       });
-      console.log(response);
       // console.log("Response data:", response.data); // Log the response data
       setBooksList(response.data.books);
       // console.log("This is Booklist : ", booksList);
