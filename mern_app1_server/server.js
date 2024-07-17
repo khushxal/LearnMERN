@@ -9,6 +9,7 @@ import bodyParser from "body-parser";
 import connectDB from "./utils/db.js";
 import errorHandler from "./middleware/error-middleware.js";
 import cors from "cors";
+import serverless from "serverless-http";
 const app = express();
 const port = 3001;
 
@@ -37,13 +38,18 @@ app.use(errorHandler);
 
 // -- Handling all req where the requested route is not available -- //
 
+app.get("/", function (req, res) {
+  res.send("Data");
+});
+
 app.get("/*", function (req, res) {
   res.sendStatus(404);
 });
 
 // -- Running the server only if the database is connected-- //
 connectDB().then(function () {
-  app.listen(port, function (req, res) {
+  app.listen(port, async function (req, res, event, context) {
     console.log(`Server hosted at http://localhost:${port}`);
+    return serverless(app)(event, context);
   });
 });
