@@ -38,9 +38,9 @@ app.use(errorHandler);
 
 // -- Handling all req where the requested route is not available -- //
 
-app.get("/", function (req, res) {
-  res.send("Data");
-});
+// app.get("/", function (req, res) {
+//   res.send("Data");
+// });
 
 app.get("/*", function (req, res) {
   res.sendStatus(404);
