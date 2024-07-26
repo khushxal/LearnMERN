@@ -11,7 +11,7 @@ function About() {
           <h1 className="mt-2 ms-2 text-center">About Developer</h1>
           <div className="col-7 fw-light">
             <p className="mt-2 ms-2 fs-3">
-              Radhe Radhe {user ? user.username : ""} ❤,
+              Radhe Radhe {user ? user.username : ""} ,
             </p>
             <p className="mt-2 ms-2 fs-4">
               This is me (Khushal Verma). Hope you love the website created by
