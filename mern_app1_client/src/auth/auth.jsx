@@ -10,8 +10,8 @@ export function AuthProvider({ children }) {
 
   // when login or sign up token stored
   function storeToken(Token) {
-    localStorage.setItem("token", Token);
     setToken(Token);
+    localStorage.setItem("token", Token);
   }
 
   function deleteToken() {
