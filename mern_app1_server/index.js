@@ -48,8 +48,7 @@ app.get("/*", function (req, res) {
 
 // -- Running the server only if the database is connected-- //
 connectDB().then(function () {
-  app.listen(port, async function (req, res, event, context) {
+  app.listen(port, async function (req, res) {
     console.log(`Server hosted at http://localhost:${port}`);
-    return serverless(app)(event, context);
   });
 });
