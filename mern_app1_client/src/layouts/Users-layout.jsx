@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { UseAuth } from "../auth/auth";
 import { useNavigate } from "react-router-dom";
 function Users() {
-  const URL = "http://localhost:3001/api/admin";
+  const URL = import.meta.env.VITE_SERVER_API + "/api/admin";
 
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(null);

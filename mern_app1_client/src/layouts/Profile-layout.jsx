@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { UseAuth } from "../auth/auth";
 function Profile() {
-  const URL = "http://localhost:3001/api/admin";
+  const URL = import.meta.env.VITE_SERVER_API + "/api/admin";
 
   const { token } = UseAuth();
   const [admin, setAdmin] = useState({});

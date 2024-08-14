@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { UseAuth } from "../auth/auth";
 
 function Queries() {
-  const URL = "http://localhost:3001/api/admin";
+  const URL = import.meta.env.VITE_SERVER_API + "/api/admin";
 
   const [queries, setQueries] = useState([]);
   const [loading, setLoading] = useState(null);

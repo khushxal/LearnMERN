@@ -8,7 +8,7 @@ function Edituser() {
   const { token } = UseAuth();
   const location = useLocation();
   const navigate = useNavigate();
-  const URL = "http://localhost:3001/api/admin";
+  const URL = import.meta.env.VITE_SERVER_API + "/api/admin";
   const [userDetails, setUserDetails] = useState({
     email: "",
     username: "",

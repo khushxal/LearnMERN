@@ -4,7 +4,7 @@ import { UseAuth } from "../auth/auth";
 import { useEffect, useState } from "react";
 
 function Books() {
-  const URL = "http://localhost:3001/api/admin/books";
+  const URL = import.meta.env.VITE_SERVER_API + "/api/admin/books";
   const [bookList, setBookList] = useState([]);
   const [loading, setLoading] = useState(null);
   const { token } = UseAuth();
