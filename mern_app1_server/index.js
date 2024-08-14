@@ -9,7 +9,6 @@ import bodyParser from "body-parser";
 import connectDB from "./utils/db.js";
 import errorHandler from "./middleware/error-middleware.js";
 import cors from "cors";
-import serverless from "serverless-http";
 const app = express();
 const port = 3001;
 
