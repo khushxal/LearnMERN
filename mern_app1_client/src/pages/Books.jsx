@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 function Books() {
   const navigate = useNavigate();
   const { token } = UseAuth();
-  const URL = "http://localhost:3001/api/data/books";
+  const URL = import.meta.env.VITE_SERVER_API + "/api/data/books";
 
   const [loading, setLoading] = useState(null);
   const [booksList, setBooksList] = useState([]);

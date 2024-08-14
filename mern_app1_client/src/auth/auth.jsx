@@ -23,11 +23,14 @@ export function AuthProvider({ children }) {
   async function isAuthorizedUser() {
     try {
       setIsLoading(true);
-      const res = await axios.get("http://localhost:3001/api/auth/user", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const res = await axios.get(
+        import.meta.env.VITE_SERVER_API + "/api/auth/user",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       if (res) {
         setUser(await res.data.userData);
         setIsLoading(false);

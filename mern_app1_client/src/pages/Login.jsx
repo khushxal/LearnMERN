@@ -5,7 +5,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import "../css/Login.css";
 function Login() {
-  const URI = "http://localhost:3001/api/auth/login";
+  const URI = import.meta.env.VITE_SERVER_API + "/api/auth/login";
 
   const location = useLocation();
   const navigate = useNavigate();

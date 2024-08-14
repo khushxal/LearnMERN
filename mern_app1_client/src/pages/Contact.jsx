@@ -5,7 +5,7 @@ import axios from "axios";
 import "../css/Contact.css";
 
 function Contact() {
-  const URI = "http://localhost:3001/api/contact/contact";
+  const URI = import.meta.env.VITE_SERVER_API + "/api/contact/contact";
 
   const { user } = UseAuth();
 

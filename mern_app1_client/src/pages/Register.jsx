@@ -4,7 +4,7 @@ import { UseAuth } from "../auth/auth.jsx";
 import axios from "axios";
 import { toast } from "react-toastify";
 function Register() {
-  const URI = "http://localhost:3001/api/auth/register";
+  const URI = import.meta.env.VITE_SERVER_API + "/api/auth/register";
 
   const navigate = useNavigate();
 
