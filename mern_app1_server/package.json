@@ -1,7 +1,6 @@
 {
   "name": "mernapp1",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "type": "module",
   "scripts": {
@@ -19,5 +18,7 @@
     "mongoose": "^8.4.0",
     "serverless-http": "^2.7.0",
     "zod": "^3.23.8"
-  }
+  },
+  "devDependencies": {},
+  "description": ""
 }
