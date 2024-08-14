@@ -41,8 +41,8 @@ app.use(errorHandler);
 //   res.send("Data");
 // });
 
-app.get("/*", function (req, res) {
-  res.sendStatus(404);
+app.get("*", function (req, res) {
+  res.send("API CALL IS NOT FOUND");
 });
 
 // -- Running the server only if the database is connected-- //
