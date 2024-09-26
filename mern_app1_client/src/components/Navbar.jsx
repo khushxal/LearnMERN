@@ -12,7 +12,7 @@ function Navbar() {
           to="/"
           className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none"
         >
-          <span className="fs-3 fw-bolder">MERN App</span>
+          <span className="fs-3 fw-bolder">LearnMERN</span>
         </Link>
 
         <ul className="nav nav-pills fs-6 fw-light">
